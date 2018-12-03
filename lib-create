@@ -4,7 +4,7 @@ const path = require('path');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
-
+// // TODO: exclude src/wallabyTest.ts in projects/<NAMe>/tsconfig.lib.json
 
 const libName = process.argv[2];
 
@@ -51,8 +51,7 @@ exec(`ng g library ${libName} --prefix ngx`)
     console.log(results.stdout);
     const files = [
       'LICENSE',
-      'README.MD',
-      'karma-build.conf.js',
+      'README.md',
       'wallaby.js',
       'tsconfig.wallaby.spec.json',
       'src/wallabyTest.ts'

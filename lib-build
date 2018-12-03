@@ -8,17 +8,14 @@ const exec = util.promisify(require('child_process').exec);
 
 const libName = process.argv[2];
 const libDir = path.join(process.cwd(), 'projects', libName);
-const docsDir = path.join(process.cwd(), 'docs', libName);
 const distDir = path.join(process.cwd(), 'dist', libName);
-const karmaConfig = path.join(libDir, 'karma-build.conf.js');
-const unitTestJSON = path.join(process.cwd(), 'coverage', libName, 'coverage-summary.json')
 let version;
 console.log(`Publishing ${libName}...`);
 console.log(`Committing changes before building...`);
-exec('git add -A')
+exec(`git add projects/${libName}/*`)
   .then((results) => {
     console.log(results.stdout);
-    return exec(`git commit -m "before building"`)
+    return exec(`git commit -m "before building ${libName}"`)
   })
   .then((results) => {
     console.log(results.stdout);
@@ -28,44 +25,39 @@ exec('git add -A')
   .then(results => {
     version = results.stdout.trim();
     console.log(results.stdout);
-    console.log(`Unit tests...`);
-    return exec(`ng test ${libName}  --karma-config ${karmaConfig} --code-coverage`);
-  })
-  .then(results => {
-    console.log(results.stdout);
     console.log(`Building lib...`);
     return exec(`ng build ${libName}`);
   })
   .then((results) => {
     console.log(results.stdout);
-    console.log(`Building docs to ${docsDir}...`);
-    return exec(`compodoc -p tsconfig.lib.json -s -n "@nowzoo/${libName} documentation: ${version} --unitTestCoverage ${unitTestJSON}"`, {cwd: libDir})
+    console.log(`Building docs...`);
+    return exec(`compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${libName} -n "@nowzoo/${libName} - ${version} - Documentation"`, {cwd: libDir})
   })
   .then((results) => {
     console.log(results.stdout);
-    // console.log(`Publishing to npm...`);
-    // return exec(`npm publish --access public`, {cwd: distDir})
+    console.log(`Publishing to npm...`);
+    return exec(`npm publish --access public`, {cwd: distDir})
   })
-  // .then((results) => {
-  //   console.log(results.stdout);
-  //   console.log(`Committing changes before building...`);
-  //   return exec(`git add -A`)
-  // })
-  // .then(() => {
-  //   return exec(`git commit -m "published version ${version}"`)
-  // })
-  // .then(() => {
-  //   console.log(`Committed. Tagging the commit...`);
-  //   return exec(`git tag ${version}`)
-  // })
-  // .then(() => {
-  //   console.log(`Tagged. Pushing the commit...`);
-  //   return exec(`git push`)
-  // })
-  // .then((results) => {
-  //   console.log(`Pushed. Pushing the tag...`);
-  //   return exec(`git push --tags`)
-  // })
-  // .then((results) => {
-  //   console.log('Tag pushed. Done.');
-  // });
+  .then((results) => {
+    // console.log(results.stdout);
+    console.log(`Committing changes before building...`);
+    return exec(`git add -A`)
+  })
+  .then(() => {
+    return exec(`git commit -m "published version ${version}"`)
+  })
+  .then(() => {
+    console.log(`Committed. Tagging the commit...`);
+    return exec(`git tag ${version}`)
+  })
+  .then(() => {
+    console.log(`Tagged. Pushing the commit...`);
+    return exec(`git push`)
+  })
+  .then((results) => {
+    console.log(`Pushed. Pushing the tag...`);
+    return exec(`git push --tags`)
+  })
+  .then((results) => {
+    console.log(`Tag pushed. Done. ${libName} published.`);
+  });
