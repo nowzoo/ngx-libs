@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-message": [
+        "dist/ngx-message"
+      ],
+      "ngx-message/*": [
+        "dist/ngx-message/*"
+      ]
+    }
   }
 }

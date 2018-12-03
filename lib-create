@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+const fs = require('fs-extra');
+const path = require('path');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
+
+
+const libName = process.argv[2];
+
+const copyReplace = (fname, libName) => {
+  console.log(`Creating ${fname}`);
+  const src = path.join(process.cwd(), 'project-template', fname);
+  const dst = path.join(process.cwd(), 'projects', libName, fname);
+  return fs.readFile(src, 'utf8')
+    .then(result => {
+      return fs.outputFile(dst, result.replace(/__LIB_NAME__/g, libName));
+    })
+    .then(() => {
+      console.log(`${fname} created.`);
+    })
+}
+
+const fixPackage = (libName) => {
+  const pkgPath = path.join(process.cwd(), 'projects', libName, 'package.json');
+  console.log(`Modifying package.json...`);
+  fs.readJSON(pkgPath)
+    .then(o => {
+      const mod = Object.assign({}, o, {
+        name: `@nowzoo/${libName}`,
+        description: `Angular library for...`,
+        license: 'MIT',
+        repository: {
+          type : 'git',
+          url : "https://github.com/nowzoo/ngx-libs.git"
+        },
+        bugs: 'https://github.com/nowzoo/ngx-libs/issues',
+        homepage: `https://nowzoo.github.io/ngx-libs/${libName}`
+      });
+      return fs.outputFile(pkgPath, JSON.stringify(mod, null, `\t`));
+    })
+    .then(() => {
+      console.log(`package.json modified.`);
+    })
+}
+
+
+console.log(`Creating ${libName}...`);
+exec(`ng g library ${libName} --prefix ngx`)
+  .then(results => {
+    console.log(results.stdout);
+    const files = [
+      'LICENSE',
+      'README.MD',
+      'karma-build.conf.js',
+      'wallaby.js',
+      'tsconfig.wallaby.spec.json',
+      'src/wallabyTest.ts'
+    ];
+    const promises = files.map(fname => copyReplace(fname, libName));
+    return Promise.all(promises);
+  })
+  .then(() => {
+    return fixPackage(libName);
+  });
