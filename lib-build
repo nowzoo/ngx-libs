@@ -39,33 +39,33 @@ exec('git add -A')
   .then((results) => {
     console.log(results.stdout);
     console.log(`Building docs to ${docsDir}...`);
-    return exec(`compodoc -p tsconfig.lib.json -d ${docsDir} -n "@nowzoo/${libName} documentation: ${version} --unitTestCoverage ${unitTestJSON}"`, {cwd: libDir})
+    return exec(`compodoc -p tsconfig.lib.json -s -n "@nowzoo/${libName} documentation: ${version} --unitTestCoverage ${unitTestJSON}"`, {cwd: libDir})
   })
   .then((results) => {
     console.log(results.stdout);
-    console.log(`Publishing to npm...`);
-    return exec(`npm publish --access public`, {cwd: distDir})
+    // console.log(`Publishing to npm...`);
+    // return exec(`npm publish --access public`, {cwd: distDir})
   })
-  .then((results) => {
-    console.log(results.stdout);
-    console.log(`Committing changes before building...`);
-    return exec(`git add -A`)
-  })
-  .then(() => {
-    return exec(`git commit -m "published version ${version}"`)
-  })
-  .then(() => {
-    console.log(`Committed. Tagging the commit...`);
-    return exec(`git tag ${version}`)
-  })
-  .then(() => {
-    console.log(`Tagged. Pushing the commit...`);
-    return exec(`git push`)
-  })
-  .then((results) => {
-    console.log(`Pushed. Pushing the tag...`);
-    return exec(`git push --tags`)
-  })
-  .then((results) => {
-    console.log('Tag pushed. Done.');
-  });
+  // .then((results) => {
+  //   console.log(results.stdout);
+  //   console.log(`Committing changes before building...`);
+  //   return exec(`git add -A`)
+  // })
+  // .then(() => {
+  //   return exec(`git commit -m "published version ${version}"`)
+  // })
+  // .then(() => {
+  //   console.log(`Committed. Tagging the commit...`);
+  //   return exec(`git tag ${version}`)
+  // })
+  // .then(() => {
+  //   console.log(`Tagged. Pushing the commit...`);
+  //   return exec(`git push`)
+  // })
+  // .then((results) => {
+  //   console.log(`Pushed. Pushing the tag...`);
+  //   return exec(`git push --tags`)
+  // })
+  // .then((results) => {
+  //   console.log('Tag pushed. Done.');
+  // });
