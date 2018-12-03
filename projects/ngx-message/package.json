@@ -1,6 +1,6 @@
 {
 	"name": "@nowzoo/ngx-message",
-	"version": "0.0.31",
+	"version": "0.0.32",
 	"peerDependencies": {
 		"@angular/common": "^7.0.0",
 		"@angular/core": "^7.0.0"
