@@ -23,6 +23,12 @@
       ],
       "ngx-message/*": [
         "dist/ngx-message/*"
+      ],
+      "ngx-crumbs": [
+        "dist/ngx-crumbs"
+      ],
+      "ngx-crumbs/*": [
+        "dist/ngx-crumbs/*"
       ]
     }
   }
