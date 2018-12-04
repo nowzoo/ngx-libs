@@ -11,17 +11,7 @@ const libDir = path.join(process.cwd(), 'projects', libName);
 const distDir = path.join(process.cwd(), 'dist', libName);
 let version;
 console.log(`Publishing ${libName}...`);
-console.log(`Committing changes before building...`);
-exec(`git add projects/${libName}/*`)
-  .then((results) => {
-    console.log(results.stdout);
-    return exec(`git commit -m "before building ${libName}"`)
-  })
-  .then((results) => {
-    console.log(results.stdout);
-    console.log(`Bumping the version...`);
-    return exec('npm version patch', {cwd: libDir});
-  })
+exec('npm version patch', {cwd: libDir})
   .then(results => {
     version = results.stdout.trim();
     console.log(results.stdout);

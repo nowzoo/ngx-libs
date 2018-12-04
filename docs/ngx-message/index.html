@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-message - v0.0.34 - Documentation</title>
+        <title>@nowzoo/ngx-message - v0.0.35 - Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@nowzoo/ngx-message - v0.0.34 - Documentation</a>
+            <a href="./" class="navbar-brand">@nowzoo/ngx-message - v0.0.35 - Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -31,7 +31,41 @@
                    <div class="content-data">
 
 <h1 id="-nowzoo-ngx-message">@nowzoo/ngx-message</h1>
-<p>Description</p>
+<p>A service and component for displaying app messages.</p>
+<h2 id="quick-start">Quick start</h2>
+<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-message</code></pre></div><p>Import the module...</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxMessageModule } from &#39;&#64;nowzoo/ngx-message&#39;;
+&#64;NgModule({
+  imports: [
+    NgxMessageModule.forRoot()
+  ],
+})
+export class AppModule { }</code></pre></div><p>Insert the component at a high level in your app...</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;!-- app.component.html --&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;ngx-message&gt;&lt;/ngx-message&gt;</code></pre></div><p>Use the service to display messages...</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxMessageService } from &#39;&#64;nowzoo/ngx-message&#39;;
+
+export class MyComponent {
+
+  constructor(
+    private msgService: NgxMessageService
+  ) { }
+
+  showSuccess() {
+    this.msgService.success(&#39;Hey, you are great!&#39;)
+  }
+
+  showWarning() {
+    this.msgService.warn(&#39;Woops!&#39;)
+  }
+
+  showWait() {
+    this.msgService.wait(&#39;Waiting...&#39;)
+  }
+
+}
+</code></pre></div><p><a href="https://nowzoo.github.io/ngx-libs/ngx-message/">Full Documentation</a></p>
 
 
 
