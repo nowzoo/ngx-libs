@@ -11,35 +11,32 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container">
-      <h1>ngx-libs</h1>
-      <div class="row">
-        <div class="col-sm-6 col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">ngx-message</h5>
-              <p class="card-text">A service and component for displaying app messages.</p>
-              <a href="ngx-message-demo" class="btn btn-primary">Demo</a>
-              <a href="ngx-message" class="btn btn-primary">Docs</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">ngx-crumbs</h5>
-              <p class="card-text">Breadcrumbs and window title.</p>
-              <a href="ngx-crumbs-demo" class="btn btn-primary">Demo</a>
-              <a href="ngx-crumbs" class="btn btn-primary">Docs</a>
-            </div>
-          </div>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">ngx-message Demo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../ngx-message">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/nowzoo/ngx-libs">GitHub</a>
+          </li>
+
+        </ul>
       </div>
-      <ul>
-        <li><a href="ngx-message">ngx-message</a></li>
-        <li><a href="ngx-crumbs">ngx-crumbs</a></li>
-      </ul>
+    </nav>
+    <div class="jumbotron">
+      <h1 class="display-4">ngx-message</h1>
+      <p class="lead">A service and component for displaying app messages.</p>
     </div>
+    <div class="container">
+      <app-root></app-root>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

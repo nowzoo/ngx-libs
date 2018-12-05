@@ -203,6 +203,360 @@
           }
         }
       }
+    },
+    "ngx-message-demo": {
+      "root": "projects/ngx-message-demo/",
+      "sourceRoot": "projects/ngx-message-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "docs/ngx-message-demo",
+            "index": "projects/ngx-message-demo/src/index.html",
+            "main": "projects/ngx-message-demo/src/main.ts",
+            "polyfills": "projects/ngx-message-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-message-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-message-demo/src/favicon.ico",
+              "projects/ngx-message-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-message-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-message-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-message-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-message-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-message-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-message-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-message-demo/src/test.ts",
+            "polyfills": "projects/ngx-message-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-message-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-message-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-message-demo/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-message-demo/src/favicon.ico",
+              "projects/ngx-message-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-message-demo/tsconfig.app.json",
+              "projects/ngx-message-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-crumbs-demo": {
+      "root": "projects/ngx-crumbs-demo/",
+      "sourceRoot": "projects/ngx-crumbs-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:component": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "docs/ngx-crumbs-demo",
+            "index": "projects/ngx-crumbs-demo/src/index.html",
+            "main": "projects/ngx-crumbs-demo/src/main.ts",
+            "polyfills": "projects/ngx-crumbs-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-crumbs-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-crumbs-demo/src/favicon.ico",
+              "projects/ngx-crumbs-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-crumbs-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-crumbs-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-crumbs-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-crumbs-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-crumbs-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-crumbs-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-crumbs-demo/src/test.ts",
+            "polyfills": "projects/ngx-crumbs-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-crumbs-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-crumbs-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-crumbs-demo/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-crumbs-demo/src/favicon.ico",
+              "projects/ngx-crumbs-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-crumbs-demo/tsconfig.app.json",
+              "projects/ngx-crumbs-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-bootstrap-navbar": {
+      "root": "projects/ngx-bootstrap-navbar",
+      "sourceRoot": "projects/ngx-bootstrap-navbar/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-bootstrap-navbar/tsconfig.lib.json",
+            "project": "projects/ngx-bootstrap-navbar/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-bootstrap-navbar/src/test.ts",
+            "tsConfig": "projects/ngx-bootstrap-navbar/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-bootstrap-navbar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-bootstrap-navbar/tsconfig.lib.json",
+              "projects/ngx-bootstrap-navbar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-bootstrap-navbar-demo": {
+      "root": "projects/ngx-bootstrap-navbar-demo/",
+      "sourceRoot": "projects/ngx-bootstrap-navbar-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "docs/ngx-bootstrap-navbar-demo",
+            "index": "projects/ngx-bootstrap-navbar-demo/src/index.html",
+            "main": "projects/ngx-bootstrap-navbar-demo/src/main.ts",
+            "polyfills": "projects/ngx-bootstrap-navbar-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-bootstrap-navbar-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-bootstrap-navbar-demo/src/favicon.ico",
+              "projects/ngx-bootstrap-navbar-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-bootstrap-navbar-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-bootstrap-navbar-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-bootstrap-navbar-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-bootstrap-navbar-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-bootstrap-navbar-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-bootstrap-navbar-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-bootstrap-navbar-demo/src/test.ts",
+            "polyfills": "projects/ngx-bootstrap-navbar-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-bootstrap-navbar-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-bootstrap-navbar-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-bootstrap-navbar-demo/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-bootstrap-navbar-demo/src/favicon.ico",
+              "projects/ngx-bootstrap-navbar-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-bootstrap-navbar-demo/tsconfig.app.json",
+              "projects/ngx-bootstrap-navbar-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-libs"

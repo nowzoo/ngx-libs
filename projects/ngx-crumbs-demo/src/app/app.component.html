@@ -1,0 +1,28 @@
+<ngx-crumbs-window-title></ngx-crumbs-window-title>
+<ngx-crumbs></ngx-crumbs>
+<ng-template [ngxCrumb]="['/']">Demo Home</ng-template>
+<div class="row">
+  <div class="col-8">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-4">
+    <ul>
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/', 'dynamic']">Dynamic Title Route</a></li>
+      <li><a [routerLink]="['/', 'another']">Another Route</a></li>
+      <li>
+        <a [routerLink]="['/', 'foo']">Foo Route</a>
+        <ul>
+          <li>
+            <a [routerLink]="['/', 'foo', 'bar']">Bar Route</a>
+            <ul>
+              <li>
+                <a [routerLink]="['/', 'foo', 'bar', 'baz']">Baz Route</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

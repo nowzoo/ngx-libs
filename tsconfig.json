@@ -18,17 +18,23 @@
       "dom"
     ],
     "paths": {
-      "ngx-message": [
+      "@nowzoo/ngx-message": [
         "dist/ngx-message"
       ],
-      "ngx-message/*": [
+      "@nowzoo/ngx-message/*": [
         "dist/ngx-message/*"
       ],
-      "ngx-crumbs": [
+      "@nowzoo/ngx-crumbs": [
         "dist/ngx-crumbs"
       ],
-      "ngx-crumbs/*": [
+      "@nowzoo/ngx-crumbs/*": [
         "dist/ngx-crumbs/*"
+      ],
+      "@nowzoo/ngx-bootstrap-navbar": [
+        "dist/ngx-bootstrap-navbar"
+      ],
+      "@nowzoo/ngx-bootstrap-navbar/*": [
+        "dist/ngx-bootstrap-navbar/*"
       ]
     }
   }
