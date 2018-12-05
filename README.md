@@ -1,39 +1,32 @@
 # NgxLibs
 
-
-### Building a library
-
+### Create a library
 ```bash
-LIBNAME="CHANGE THIS"
-cd projects/${LIBNAME}
-# Patch version...
-VERSION="$(npm version patch)"
-# Build docs...
-compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}"
+# set the name of the lib...
+LIBNAME=CHANGETHIS
 
-# Build lib
-cd ../..
-ng build ${LIBNAME}
-
-# Build the demo...
-ng build ${LIBNAME}-demo --prod --aot
-
-# NPM Publish...
-cd dist/${LIBNAME}
-npm publish --access public
-cd ../..
-
-# Git push...
-git add -A
-git tag ${VERSION}
-git commit -m "pubisled version ${VERSION}"
+# one liner...
+cd projects/${LIBNAME} && \
+VERSION="$(npm version patch)" && \
+compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}" && \
+cd ../.. && \
+ng build ${LIBNAME} && \
+ng build ${LIBNAME}-demo --prod --aot && \
+cd dist/${LIBNAME} && \
+npm publish --access public && \
+cd ../.. && \
+git add -A &&
+git tag ${VERSION} && \
+git commit -m "published version ${VERSION}" && \
 git push
-
 ```
+
+
+### Build a library
 
 ```bash
 # set the name of the lib...
-LIBNAME=CHANGE
+LIBNAME=CHANGETHIS
 
 # one liner...
 cd projects/${LIBNAME} && \

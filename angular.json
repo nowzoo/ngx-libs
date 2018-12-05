@@ -557,6 +557,41 @@
           }
         }
       }
+    },
+    "ngx-form": {
+      "root": "projects/ngx-form",
+      "sourceRoot": "projects/ngx-form/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-form/tsconfig.lib.json",
+            "project": "projects/ngx-form/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-form/src/test.ts",
+            "tsConfig": "projects/ngx-form/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-form/tsconfig.lib.json",
+              "projects/ngx-form/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-libs"

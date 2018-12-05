@@ -35,6 +35,12 @@
       ],
       "@nowzoo/ngx-bootstrap-navbar/*": [
         "dist/ngx-bootstrap-navbar/*"
+      ],
+      "@nowzoo/ngx-form": [
+        "dist/ngx-form"
+      ],
+      "@nowzoo/ngx-form/*": [
+        "dist/ngx-form/*"
       ]
     }
   }
