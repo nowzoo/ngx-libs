@@ -1,5 +1,37 @@
 # NgxLibs
 
+
+### Building a library
+
+```bash
+LIBNAME="CHANGE THIS"
+cd projects/${LIBNAME}
+# Patch version...
+VERSION="$(npm version patch)"
+# Build docs...
+compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}"
+
+# Build lib
+cd ../..
+ng build ${LIBNAME}
+
+# Build the demo...
+ng build ${LIBNAME}-demo --prod --aot
+
+# NPM Publish...
+cd dist/${LIBNAME}
+npm publish --access public
+cd ../..
+
+# Git push...
+git add -A
+git tag ${VERSION}
+git commit -m "pubisled version ${VERSION}"
+git push
+
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
 ## Development server
