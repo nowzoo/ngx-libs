@@ -31,6 +31,25 @@ git push
 
 ```
 
+```bash
+# set the name of the lib...
+LIBNAME=CHANGE
+
+# one liner...
+cd projects/${LIBNAME} && \
+VERSION="$(npm version patch)" && \
+compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}" && \
+cd ../.. && \
+ng build ${LIBNAME} && \
+ng build ${LIBNAME}-demo --prod --aot && \
+cd dist/${LIBNAME} && \
+npm publish --access public && \
+cd ../.. && \
+git add -A &&
+git tag ${VERSION} && \
+git commit -m "published version ${VERSION}" && \
+git push
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
