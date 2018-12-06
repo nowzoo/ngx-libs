@@ -592,6 +592,41 @@
           }
         }
       }
+    },
+    "ngx-sign-in-redirect": {
+      "root": "projects/ngx-sign-in-redirect",
+      "sourceRoot": "projects/ngx-sign-in-redirect/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-sign-in-redirect/tsconfig.lib.json",
+            "project": "projects/ngx-sign-in-redirect/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-sign-in-redirect/src/test.ts",
+            "tsConfig": "projects/ngx-sign-in-redirect/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-sign-in-redirect/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-sign-in-redirect/tsconfig.lib.json",
+              "projects/ngx-sign-in-redirect/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-libs"

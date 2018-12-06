@@ -1,12 +1,13 @@
-import { Directive, OnInit, OnDestroy, Optional, Host, Renderer2, ElementRef } from '@angular/core';
+import { Directive, OnInit, OnDestroy, Optional, Host, Renderer2, ElementRef, Input } from '@angular/core';
 import { FormControlDirective, FormControlName, AbstractControl } from '@angular/forms';
-import { Subject, combineLatest } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 @Directive({
   selector: '[ngxInvalidControl]'
 })
 export class NgxInvalidControlDirective implements OnInit, OnDestroy {
   private _ngUnsubscribe: Subject<void> = new Subject<void>();
+  @Input() ngxInvalidControl: 'touched' | 'dirty' = 'touched';
   constructor(
     @Optional() @Host() private _d1: FormControlDirective,
     @Optional() @Host() private _d2: FormControlName,
@@ -37,10 +38,11 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
     if (! control) {
       return;
     }
-    combineLatest(control.valueChanges, control.statusChanges)
+    control.valueChanges
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() => {
-        if (control.invalid && control.touched) {
+        const showError = 'dirty' === this.ngxInvalidControl ? control.dirty : control.touched;
+        if (control.invalid && showError) {
           this.renderer.addClass(this.el, 'is-invalid');
         } else {
           this.renderer.removeClass(this.el, 'is-invalid');

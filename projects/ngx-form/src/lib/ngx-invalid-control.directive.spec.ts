@@ -1,9 +1,22 @@
 import { NgxInvalidControlDirective } from './ngx-invalid-control.directive';
+import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+
 describe('NgxInvalidControlDirective', () => {
   it('should create an instance', () => {
     const directive = new NgxInvalidControlDirective({} as any, null, {} as any, {} as any);
     expect(directive).toBeTruthy();
+  });
+
+  it('should sub and unsub from control.valueChanges', () => {
+    const directive = new NgxInvalidControlDirective(null, null, {} as any, {} as any);
+    const control = {valueChanges: new Subject()};
+    spyOnProperty(directive, 'control').and.returnValue(control);
+    expect(control.valueChanges.observers.length).toBe(0);
+    directive.ngOnInit();
+    expect(control.valueChanges.observers.length).toBe(1);
+    directive.ngOnDestroy();
+    expect(control.valueChanges.observers.length).toBe(0);
   });
 
   describe('getters', () => {
@@ -36,22 +49,13 @@ describe('NgxInvalidControlDirective', () => {
   });
 
   describe('ngOnInit and ngOnDestroy', () => {
-    let control: any;
-    let statusChanges$: Subject<any>;
-    let valueChanges$: Subject<any>;
+    let control: FormControl;
     let el: any;
     let renderer: any;
     let elementRef: any;
     let directive: NgxInvalidControlDirective;
     beforeEach(() => {
-      statusChanges$ = new Subject();
-      valueChanges$ = new Subject();
-      control = {
-        valueChanges: valueChanges$.asObservable(),
-        statusChanges: statusChanges$.asObservable(),
-        touched: false,
-        invalid: false
-      };
+      control = new FormControl('', Validators.required);
       el = {};
       elementRef = {nativeElement: el};
       renderer = {
@@ -63,33 +67,36 @@ describe('NgxInvalidControlDirective', () => {
     it('should be ok if there is no control', () => {
       spyOnProperty(directive, 'control').and.returnValue(null);
       directive.ngOnInit();
-      expect(valueChanges$.observers.length).toBe(0);
     });
-    it('should sub and unsub from valueChanges', () => {
-      expect(valueChanges$.observers.length).toBe(0);
+    it('should set the class if the control is invalid and the control is touched', () => {
       directive.ngOnInit();
-      expect(valueChanges$.observers.length).toBe(1);
-      directive.ngOnDestroy();
-      expect(valueChanges$.observers.length).toBe(0);
-    });
-    it('should sub and unsub from statusChanges', () => {
-      expect(statusChanges$.observers.length).toBe(0);
-      directive.ngOnInit();
-      expect(statusChanges$.observers.length).toBe(1);
-      directive.ngOnDestroy();
-      expect(statusChanges$.observers.length).toBe(0);
-    });
-    it('should set/remove the class if the control based on touched and invalid', () => {
-      directive.ngOnInit();
-      expect(renderer.addClass).not.toHaveBeenCalled();
-      expect(renderer.removeClass).not.toHaveBeenCalled();
-      valueChanges$.next(null);
-      statusChanges$.next(null);
-      expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
-      control.touched = true;
-      control.invalid = true;
-      statusChanges$.next(null);
+      control.markAsTouched();
+      control.setValue('');
       expect(renderer.addClass).toHaveBeenCalledWith(el, 'is-invalid');
     });
+    it('should remove the class if the control is valid', () => {
+      directive.ngOnInit();
+      control.markAsTouched();
+      control.setValue('sggshg');
+      expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
+    });
+    describe('if ngxInvalidControl is "dirty"', () => {
+      beforeEach(() => {
+        directive.ngxInvalidControl = 'dirty';
+      });
+      it('should set the class if the control is invalid and the control is dirty', () => {
+        directive.ngOnInit();
+        control.markAsDirty();
+        control.setValue('');
+        expect(renderer.addClass).toHaveBeenCalledWith(el, 'is-invalid');
+      });
+      it('should remove the class if the control is valid', () => {
+        directive.ngOnInit();
+        control.markAsDirty();
+        control.setValue('sggshg');
+        expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
+      });
+    });
+
   });
 });

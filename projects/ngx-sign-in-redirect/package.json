@@ -1,6 +1,6 @@
 {
-	"name": "@nowzoo/ngx-form",
-	"version": "0.0.6",
+	"name": "@nowzoo/ngx-sign-in-redirect",
+	"version": "0.0.4",
 	"peerDependencies": {
 		"@angular/common": "^7.0.0",
 		"@angular/core": "^7.0.0"
@@ -12,5 +12,5 @@
 		"url": "https://github.com/nowzoo/ngx-libs.git"
 	},
 	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
-	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-form"
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-sign-in-redirect"
 }

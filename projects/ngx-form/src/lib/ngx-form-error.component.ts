@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { Subject, combineLatest } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'ngx-form-error',
   template: `
-    <div class="is-invalid d-block" *ngIf="shown">
+    <div class="invalid-feedback d-block" *ngIf="shown">
       <ng-content></ng-content>
     </div>
   `,
@@ -13,17 +13,25 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NgxFormErrorComponent implements OnInit, OnDestroy {
   private _ngUnsubscribe: Subject<void> = new Subject<void>();
-  @Input() control: AbstractControl;
+  private _control: AbstractControl;
+  @Input() set control(value: AbstractControl) {
+      this._control = value;
+  }
+  get control(): AbstractControl {
+    return this._control;
+  }
   @Input() key: string;
+  @Input() invalidOn: 'touched' | 'dirty' = 'touched';
   shown = false;
   constructor() { }
 
   ngOnInit() {
     const control = this.control;
-    combineLatest(control.valueChanges, control.statusChanges)
+    control.valueChanges
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() => {
-        this.shown = (control.hasError(this.key) && control.touched);
+        const showError = 'dirty' === this.invalidOn ? control.dirty : control.touched;
+        this.shown = (control.hasError(this.key) && showError);
       });
   }
 

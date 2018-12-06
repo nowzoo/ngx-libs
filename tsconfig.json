@@ -41,6 +41,12 @@
       ],
       "@nowzoo/ngx-form/*": [
         "dist/ngx-form/*"
+      ],
+      "ngx-sign-in-redirect": [
+        "dist/ngx-sign-in-redirect"
+      ],
+      "ngx-sign-in-redirect/*": [
+        "dist/ngx-sign-in-redirect/*"
       ]
     }
   }

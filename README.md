@@ -24,6 +24,21 @@ git push
 
 ### Build a library
 
+To tarball...
+```bash
+# set the name of the lib...
+LIBNAME=CHANGETHIS
+
+
+cd projects/${LIBNAME} && \
+VERSION="$(npm version patch)" && \
+cd ../.. && \
+ng build ${LIBNAME} && \
+cd dist && \
+npm pack ./${LIBNAME} && \
+cd ../
+```
+
 ```bash
 # set the name of the lib...
 LIBNAME=CHANGETHIS
