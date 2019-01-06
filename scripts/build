@@ -43,7 +43,7 @@ START=$(node -e 'console.log(new Date().getTime())')
 DEMONAME="${1}-demo"
 
 # build the demo
-ng build $DEMONAME  --prod --aot --baseHref "/${1}/"
+ng build $DEMONAME  --prod --aot --baseHref "/ngx-libs/${1}/"
 
 # move the files...
 mv dist/$DEMONAME/* docs/$1/
