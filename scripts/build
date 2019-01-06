@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# bump the version
+cd projects/$1
+VERSION="$(npm version patch)"
+cd ../..
+
+echo "Version bumped to ${VERSION}."
+
+
+echo "Building library ${1}..."
+START=$(node -e 'console.log(new Date().getTime())')
+
+# build the lib
+ng build $1
+
+END=$(node -e 'console.log(new Date().getTime())')
+DUR=$((( END - START )))
+echo "Library built in ${DUR}ms."
+
+
+# docs...
+
+START=$(node -e 'console.log(new Date().getTime())')
+echo "Building docs for library ${1}..."
+# go to lib folder
+cd projects/$1
+# get the version...
+VERSION=$(node -p "require('./package.json').version")
+# build the docs...
+compodoc  -p tsconfig.lib.json  \
+  --disableCoverage --disablePrivate \
+  --disableProtected --disableLifeCycleHooks \
+  --output "../../docs/${1}/docs" -n "@nowzoo/${1} ${VERSION} Documentation"
+cd ../..
+END=$(node -e 'console.log(new Date().getTime())')
+DUR=$((( END - START )))
+echo "Docs built in ${DUR}ms."
+
+echo "Building demo for library ${1}..."
+START=$(node -e 'console.log(new Date().getTime())')
+
+DEMONAME="${1}-demo"
+
+# build the demo
+ng build $DEMONAME  --prod --aot --baseHref "/${1}/"
+
+# move the files...
+mv dist/$DEMONAME/* docs/$1/
+rm -rf dist/$DEMONAME
+
+END=$(node -e 'console.log(new Date().getTime())')
+DUR=$((( END - START )))
+echo "Demo built in ${DUR}ms."
