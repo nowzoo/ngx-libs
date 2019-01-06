@@ -39,7 +39,6 @@ echo "Docs built in ${DUR}ms."
 
 echo "Building demo for library ${1}..."
 START=$(node -e 'console.log(new Date().getTime())')
-
 DEMONAME="${1}-demo"
 
 # build the demo
@@ -52,3 +51,13 @@ rm -rf dist/$DEMONAME
 END=$(node -e 'console.log(new Date().getTime())')
 DUR=$((( END - START )))
 echo "Demo built in ${DUR}ms."
+
+# get the coverage...
+echo "Getting coverage for library ${1}..."
+START=$(node -e 'console.log(new Date().getTime())')
+DEMONAME="${1}-demo"
+ng test $1 --codeCoverage=true --watch=false
+cp -r coverage docs/$1/
+END=$(node -e 'console.log(new Date().getTime())')
+DUR=$((( END - START )))
+echo "Coverage built in ${DUR}ms."

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-form 0.1.8 Documentation</title>
+        <title>@nowzoo/ngx-form 0.1.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">@nowzoo/ngx-form 0.1.8 Documentation</a>
+            <a href="../" class="navbar-brand">@nowzoo/ngx-form 0.1.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -100,7 +100,7 @@
                                 <a href="#invalidClass">invalidClass</a>
                             </li>
                             <li>
-                                <a href="#ngxInvalidControl">ngxInvalidControl</a>
+                                <a href="#invalidOn">invalidOn</a>
                             </li>
                         </ul>
                     </td>
@@ -144,7 +144,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -237,7 +237,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:22</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -246,25 +246,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-2">
-                        <a name="ngxInvalidControl"></a>
-                        <code>ngxInvalidControl</code>
+                        <a name="invalidOn"></a>
+                        <code>invalidOn</code>
                     </td>
                     <td class="col-md-10">
                         <div><p>Set ngxInvalidControl=&quot;dirty&quot; to show the error class whenvever the input changes.
 The default, &quot;touched&quot; shows the error class only when the input has been blurred.</p>
 </div>
                             <p>
-                            <em>Type :</em>    <code>&quot;touched&quot; | &quot;dirty&quot;</code>
+                            <em>Type :</em>    <code><a href="../miscellaneous/enumerations.html#NgxInvalidOn" target="_self" >NgxInvalidOn</a></code>
 
                             </p>
                         <p>
-                            <em>Default value : </em><code>&#x27;touched&#x27;</code>
+                            <em>Default value : </em><code>NgxInvalidOn.touched</code>
                         </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:17</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -295,7 +295,7 @@ The default, &quot;touched&quot; shows the error class only when the input has b
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:31</a></div>
                                 </td>
                             </tr>
 
@@ -317,7 +317,7 @@ The default, &quot;touched&quot; shows the error class only when the input has b
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:41</a></div>
                                 </td>
                             </tr>
 
@@ -339,7 +339,7 @@ The default, &quot;touched&quot; shows the error class only when the input has b
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/lib/ngx-invalid-control.directive.ts:45</a></div>
                                 </td>
                             </tr>
 
@@ -353,8 +353,10 @@ The default, &quot;touched&quot; shows the error class only when the input has b
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, OnInit, OnDestroy, Optional, Host, Renderer2, ElementRef, Input } from &#x27;@angular/core&#x27;;
 import { FormControlDirective, FormControlName, AbstractControl } from &#x27;@angular/forms&#x27;;
-import { Subject } from &#x27;rxjs&#x27;;
+import { Subject, combineLatest } from &#x27;rxjs&#x27;;
 import { takeUntil } from &#x27;rxjs/operators&#x27;;
+import { NgxInvalidOn } from &#x27;./shared&#x27;;
+
 @Directive({
   selector: &#x27;[ngxInvalidControl]&#x27;
 })
@@ -365,7 +367,7 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
    * Set ngxInvalidControl&#x3D;&quot;dirty&quot; to show the error class whenvever the input changes.
    * The default, &quot;touched&quot; shows the error class only when the input has been blurred.
    */
-  @Input() ngxInvalidControl: &#x27;touched&#x27; | &#x27;dirty&#x27; &#x3D; &#x27;touched&#x27;;
+  @Input() invalidOn: NgxInvalidOn &#x3D; NgxInvalidOn.touched;
 
   /**
    * Set &#x60;invalidClass&#x60; to change the from the Bootstrap &#x60;&#x27;is-invalid&#x27;&#x60;.
@@ -402,11 +404,22 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
     if (! control) {
       return;
     }
-    control.valueChanges
+    combineLatest(control.valueChanges, control.statusChanges)
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() &#x3D;&gt; {
-        const showError &#x3D; &#x27;dirty&#x27; &#x3D;&#x3D;&#x3D; this.ngxInvalidControl ? control.dirty : control.touched;
-        if (control.invalid &amp;&amp; showError) {
+        let shown &#x3D; false;
+        switch (this.invalidOn) {
+          case NgxInvalidOn.always:
+            shown &#x3D; control.invalid;
+            break;
+          case NgxInvalidOn.dirty:
+            shown &#x3D; control.invalid &amp;&amp; control.dirty;
+            break;
+          default:
+            shown &#x3D; control.invalid &amp;&amp; control.touched;
+            break;
+        }
+        if (shown) {
           this.renderer.addClass(this.el, this.invalidClass);
         } else {
           this.renderer.removeClass(this.el, this.invalidClass);

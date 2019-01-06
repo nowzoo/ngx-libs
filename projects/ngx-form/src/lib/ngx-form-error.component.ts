@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, combineLatest } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NgxInvalidOn } from './shared';
 @Component({
   selector: 'ngx-form-error',
   template: `
@@ -45,7 +46,7 @@ export class NgxFormErrorComponent implements OnInit, OnDestroy {
    * Set invalidOn="dirty" to show the error whenvever the input changes.
    * The default, "touched" shows the error only when the input has been blurred.
    */
-  @Input() invalidOn: 'touched' | 'dirty' = 'touched';
+  @Input() invalidOn: NgxInvalidOn = NgxInvalidOn.touched;
 
   /**
    * @ignore
@@ -55,13 +56,24 @@ export class NgxFormErrorComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
+
+
   ngOnInit() {
     const control = this.control;
-    control.valueChanges
+    combineLatest(control.valueChanges, control.statusChanges)
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() => {
-        const showError = 'dirty' === this.invalidOn ? control.dirty : control.touched;
-        this.shown = (control.hasError(this.key) && showError);
+        switch (this.invalidOn) {
+          case NgxInvalidOn.always:
+            this.shown = control.hasError(this.key);
+            break;
+          case NgxInvalidOn.dirty:
+            this.shown = control.hasError(this.key) && control.dirty;
+            break;
+          default:
+            this.shown = control.hasError(this.key) && control.touched;
+            break;
+        }
       });
   }
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-form 0.1.8 Documentation</title>
+        <title>@nowzoo/ngx-form 0.1.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">@nowzoo/ngx-form 0.1.8 Documentation</a>
+            <a href="../" class="navbar-brand">@nowzoo/ngx-form 0.1.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -173,7 +173,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/lib/ngx-form-error.component.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/lib/ngx-form-error.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -197,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/lib/ngx-form-error.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/lib/ngx-form-error.component.ts:23</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -219,7 +219,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/lib/ngx-form-error.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/lib/ngx-form-error.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -237,17 +237,17 @@ Set invalidOn=&quot;dirty&quot; to show the error whenvever the input changes.
 The default, &quot;touched&quot; shows the error only when the input has been blurred.</p>
 </div>
                             <p>
-                            <em>Type :</em>    <code>&quot;touched&quot; | &quot;dirty&quot;</code>
+                            <em>Type :</em>    <code><a href="../miscellaneous/enumerations.html#NgxInvalidOn" target="_self" >NgxInvalidOn</a></code>
 
                             </p>
                         <p>
-                            <em>Default value : </em><code>&#x27;touched&#x27;</code>
+                            <em>Default value : </em><code>NgxInvalidOn.touched</code>
                         </p>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/lib/ngx-form-error.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/lib/ngx-form-error.component.ts:49</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -270,7 +270,7 @@ The default, &quot;touched&quot; shows the error only when the input has been bl
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/lib/ngx-form-error.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/lib/ngx-form-error.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -301,7 +301,7 @@ The default, &quot;touched&quot; shows the error only when the input has been bl
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/lib/ngx-form-error.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/lib/ngx-form-error.component.ts:30</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -323,7 +323,7 @@ The default, &quot;touched&quot; shows the error only when the input has been bl
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/lib/ngx-form-error.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/lib/ngx-form-error.component.ts:23</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -370,8 +370,9 @@ The default, &quot;touched&quot; shows the error only when the input has been bl
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy, Input } from &#x27;@angular/core&#x27;;
 import { AbstractControl } from &#x27;@angular/forms&#x27;;
-import { Subject } from &#x27;rxjs&#x27;;
+import { Subject, combineLatest } from &#x27;rxjs&#x27;;
 import { takeUntil } from &#x27;rxjs/operators&#x27;;
+import { NgxInvalidOn } from &#x27;./shared&#x27;;
 @Component({
   selector: &#x27;ngx-form-error&#x27;,
   template: &#x60;
@@ -415,7 +416,7 @@ export class NgxFormErrorComponent implements OnInit, OnDestroy {
    * Set invalidOn&#x3D;&quot;dirty&quot; to show the error whenvever the input changes.
    * The default, &quot;touched&quot; shows the error only when the input has been blurred.
    */
-  @Input() invalidOn: &#x27;touched&#x27; | &#x27;dirty&#x27; &#x3D; &#x27;touched&#x27;;
+  @Input() invalidOn: NgxInvalidOn &#x3D; NgxInvalidOn.touched;
 
   /**
    * @ignore
@@ -425,13 +426,24 @@ export class NgxFormErrorComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
+
+
   ngOnInit() {
     const control &#x3D; this.control;
-    control.valueChanges
+    combineLatest(control.valueChanges, control.statusChanges)
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() &#x3D;&gt; {
-        const showError &#x3D; &#x27;dirty&#x27; &#x3D;&#x3D;&#x3D; this.invalidOn ? control.dirty : control.touched;
-        this.shown &#x3D; (control.hasError(this.key) &amp;&amp; showError);
+        switch (this.invalidOn) {
+          case NgxInvalidOn.always:
+            this.shown &#x3D; control.hasError(this.key);
+            break;
+          case NgxInvalidOn.dirty:
+            this.shown &#x3D; control.hasError(this.key) &amp;&amp; control.dirty;
+            break;
+          default:
+            this.shown &#x3D; control.hasError(this.key) &amp;&amp; control.touched;
+            break;
+        }
       });
   }
 

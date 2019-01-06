@@ -1,7 +1,9 @@
 import { Directive, OnInit, OnDestroy, Optional, Host, Renderer2, ElementRef, Input } from '@angular/core';
 import { FormControlDirective, FormControlName, AbstractControl } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, combineLatest } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NgxInvalidOn } from './shared';
+
 @Directive({
   selector: '[ngxInvalidControl]'
 })
@@ -12,7 +14,7 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
    * Set ngxInvalidControl="dirty" to show the error class whenvever the input changes.
    * The default, "touched" shows the error class only when the input has been blurred.
    */
-  @Input() ngxInvalidControl: 'touched' | 'dirty' = 'touched';
+  @Input() invalidOn: NgxInvalidOn = NgxInvalidOn.touched;
 
   /**
    * Set `invalidClass` to change the from the Bootstrap `'is-invalid'`.
@@ -49,11 +51,22 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
     if (! control) {
       return;
     }
-    control.valueChanges
+    combineLatest(control.valueChanges, control.statusChanges)
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(() => {
-        const showError = 'dirty' === this.ngxInvalidControl ? control.dirty : control.touched;
-        if (control.invalid && showError) {
+        let shown = false;
+        switch (this.invalidOn) {
+          case NgxInvalidOn.always:
+            shown = control.invalid;
+            break;
+          case NgxInvalidOn.dirty:
+            shown = control.invalid && control.dirty;
+            break;
+          default:
+            shown = control.invalid && control.touched;
+            break;
+        }
+        if (shown) {
           this.renderer.addClass(this.el, this.invalidClass);
         } else {
           this.renderer.removeClass(this.el, this.invalidClass);

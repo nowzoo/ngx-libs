@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { NgxFormErrorComponent } from './ngx-form-error.component';
+import { NgxInvalidOn } from './shared';
 
 describe('NgxFormErrorComponent', () => {
   let component: NgxFormErrorComponent;
@@ -44,9 +45,18 @@ describe('NgxFormErrorComponent', () => {
   });
 
   it('should set shown based on invalidOn and the valid state if invalidOn is "dirty"', () => {
-    component.invalidOn = 'dirty';
+    component.invalidOn = NgxInvalidOn.dirty;
     component.ngOnInit();
     control.markAsDirty();
+    control.setValue('');
+    expect(component.shown).toBe(true);
+    control.setValue('foo');
+    expect(component.shown).toBe(false);
+  });
+
+  it('should set shown based on invalidOn and the valid state if invalidOn is "always"', () => {
+    component.invalidOn = NgxInvalidOn.always;
+    component.ngOnInit();
     control.setValue('');
     expect(component.shown).toBe(true);
     control.setValue('foo');

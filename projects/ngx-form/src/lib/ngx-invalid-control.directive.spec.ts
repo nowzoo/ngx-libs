@@ -1,6 +1,7 @@
 import { NgxInvalidControlDirective } from './ngx-invalid-control.directive';
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { NgxInvalidOn } from './shared';
 
 describe('NgxInvalidControlDirective', () => {
   it('should create an instance', () => {
@@ -80,9 +81,9 @@ describe('NgxInvalidControlDirective', () => {
       control.setValue('sggshg');
       expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
     });
-    describe('if ngxInvalidControl is "dirty"', () => {
+    describe('if invalidOn is "dirty"', () => {
       beforeEach(() => {
-        directive.ngxInvalidControl = 'dirty';
+        directive.invalidOn = NgxInvalidOn.dirty;
       });
       it('should set the class if the control is invalid and the control is dirty', () => {
         directive.ngOnInit();
@@ -93,6 +94,22 @@ describe('NgxInvalidControlDirective', () => {
       it('should remove the class if the control is valid', () => {
         directive.ngOnInit();
         control.markAsDirty();
+        control.setValue('sggshg');
+        expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
+      });
+    });
+
+    describe('if invalidOn is "always"', () => {
+      beforeEach(() => {
+        directive.invalidOn = NgxInvalidOn.always;
+      });
+      it('should set the class if the control is invalid and the control is dirty', () => {
+        directive.ngOnInit();
+        control.setValue('');
+        expect(renderer.addClass).toHaveBeenCalledWith(el, 'is-invalid');
+      });
+      it('should remove the class if the control is valid', () => {
+        directive.ngOnInit();
         control.setValue('sggshg');
         expect(renderer.removeClass).toHaveBeenCalledWith(el, 'is-invalid');
       });
