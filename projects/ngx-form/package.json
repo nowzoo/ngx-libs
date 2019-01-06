@@ -1,11 +1,12 @@
 {
 	"name": "@nowzoo/ngx-form",
-	"version": "0.0.7",
+	"version": "0.1.6",
 	"peerDependencies": {
-		"@angular/common": "^7.0.0",
-		"@angular/core": "^7.0.0"
+		"@angular/common": "^7.1.0",
+		"@angular/core": "^7.1.0",
+		"@angular/forms": "^7.1.0"
 	},
-	"description": "Angular library for...",
+	"description": "Various components for showing form errors.",
 	"license": "MIT",
 	"repository": {
 		"type": "git",

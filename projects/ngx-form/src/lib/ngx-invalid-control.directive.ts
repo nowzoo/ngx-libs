@@ -7,7 +7,18 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NgxInvalidControlDirective implements OnInit, OnDestroy {
   private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+  /**
+   * Set ngxInvalidControl="dirty" to show the error class whenvever the input changes.
+   * The default, "touched" shows the error class only when the input has been blurred.
+   */
   @Input() ngxInvalidControl: 'touched' | 'dirty' = 'touched';
+
+  /**
+   * Set `invalidClass` to change the from the Bootstrap `'is-invalid'`.
+   */
+  @Input() invalidClass = 'is-invalid';
+
   constructor(
     @Optional() @Host() private _d1: FormControlDirective,
     @Optional() @Host() private _d2: FormControlName,
@@ -43,9 +54,9 @@ export class NgxInvalidControlDirective implements OnInit, OnDestroy {
       .subscribe(() => {
         const showError = 'dirty' === this.ngxInvalidControl ? control.dirty : control.touched;
         if (control.invalid && showError) {
-          this.renderer.addClass(this.el, 'is-invalid');
+          this.renderer.addClass(this.el, this.invalidClass);
         } else {
-          this.renderer.removeClass(this.el, 'is-invalid');
+          this.renderer.removeClass(this.el, this.invalidClass);
         }
       });
   }

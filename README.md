@@ -1,65 +1,6 @@
 # NgxLibs
 
-### Create a library
-```bash
-# set the name of the lib...
-LIBNAME=CHANGETHIS
-
-# one liner...
-cd projects/${LIBNAME} && \
-VERSION="$(npm version patch)" && \
-compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}" && \
-cd ../.. && \
-ng build ${LIBNAME} && \
-ng build ${LIBNAME}-demo --prod --aot && \
-cd dist/${LIBNAME} && \
-npm publish --access public && \
-cd ../.. && \
-git add -A &&
-git tag ${VERSION} && \
-git commit -m "published version ${VERSION}" && \
-git push
-```
-
-
-### Build a library
-
-To tarball...
-```bash
-# set the name of the lib...
-LIBNAME=CHANGETHIS
-
-
-cd projects/${LIBNAME} && \
-VERSION="$(npm version patch)" && \
-cd ../.. && \
-ng build ${LIBNAME} && \
-cd dist && \
-npm pack ./${LIBNAME} && \
-cd ../
-```
-
-```bash
-# set the name of the lib...
-LIBNAME=CHANGETHIS
-
-# one liner...
-cd projects/${LIBNAME} && \
-VERSION="$(npm version patch)" && \
-compodoc  -p tsconfig.lib.json  --disableCoverage --output ../../docs/${LIBNAME} -n "@nowzoo/${LIBNAME} - ${VERSION}" && \
-cd ../.. && \
-ng build ${LIBNAME} && \
-ng build ${LIBNAME}-demo --prod --aot && \
-cd dist/${LIBNAME} && \
-npm publish --access public && \
-cd ../.. && \
-git add -A &&
-git tag ${VERSION} && \
-git commit -m "published version ${VERSION}" && \
-git push
-```
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
 ## Development server
 

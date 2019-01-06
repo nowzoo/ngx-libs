@@ -1,0 +1,144 @@
+#!/usr/bin/env node
+const fs = require('fs-extra');
+const path = require('path');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
+
+const libName = process.argv[2];
+const libDesc = process.argv[3];
+
+
+const fixTSConfigLib = (libName) => {
+  const p = path.join(process.cwd(), 'projects', libName, 'tsconfig.lib.json');
+  console.log(`excluding src/wallabyTest.ts from tsconfig.lib.json...`);
+  return fs.readJSON(p)
+    .then(o => {
+      o.exclude.push('src/wallabyTest.ts');
+      return fs.outputFile(p, JSON.stringify(o, null, `\t`));
+    })
+    .then(() => console.log('tsconfig.lib.json exclude fixed.'))
+}
+
+const fixAngularJson = (libName) => {
+  // const p = path.join(process.cwd(), 'angular.json');
+  // return fs.readJSON(p)
+  //   .then(o => {
+  //     o.exclude.push('src/wallabyTest.ts');
+  //     return fs.outputFile(p, JSON.stringify(o, null, `\t`));
+  //   });
+}
+
+const fixPackage = (libName, libDesc) => {
+  const pkgPath = path.join(process.cwd(), 'projects', libName, 'package.json');
+  console.log(`Modifying package.json...`);
+  return fs.readJSON(pkgPath)
+    .then(o => {
+      const mod = Object.assign({}, o, {
+        name: `@nowzoo/${libName}`,
+        description: libDesc,
+        license: 'MIT',
+        repository: {
+          type : 'git',
+          url : "https://github.com/nowzoo/ngx-libs.git"
+        },
+        bugs: 'https://github.com/nowzoo/ngx-libs/issues',
+        homepage: `https://nowzoo.github.io/ngx-libs/${libName}`
+      });
+      return fs.outputFile(pkgPath, JSON.stringify(mod, null, `\t`));
+    })
+    .then(() => {
+      console.log(`package.json modified.`);
+    })
+}
+
+const fixTSConfigMain = (libName) => {
+  const p = path.join(process.cwd(), 'tsconfig.json');
+  console.log(`fixing the paths in tsconfig.json...`);
+  return fs.readJSON(p)
+    .then(o => {
+      const paths = Object.assign({}, o.compilerOptions.paths);
+      paths[`@nowzoo/${libName}`] = paths[`${libName}`];
+      paths[`@nowzoo/${libName}/*`] = paths[`${libName}/*`];
+      delete paths[`${libName}`];
+      delete paths[`${libName}/*`];
+      o.compilerOptions.paths = paths;
+      return fs.outputFile(p, JSON.stringify(o, null, `\t`));
+    })
+    .then(() => console.log('tsconfig.json paths fixed.'));
+}
+const createDemo = (libName, libDesc) => {
+  const demoName = `${libName}-demo`;
+  console.log(`Creating ${demoName}...`);
+  const src = path.join(process.cwd(), 'lib-template', 'demo-index.html');
+  const dst = path.join(process.cwd(), 'projects', demoName, 'src', 'index.html');
+  return exec(`ng g application ${demoName} --minimal --style=scss`)
+    .then(() => {
+      return fs.readFile(src, 'utf8')
+    })
+    .then(result => {
+      let mod = result.replace(/__LIB_NAME__/g, libName);
+      mod = mod.replace(/__LIB_DESCRIPTION__/g, libDesc);
+      return fs.outputFile(dst, mod);
+    })
+    .then(() => {
+      console.log(`${demoName} created.`);
+    })
+}
+
+const createLibrary = (libName) => {
+  console.log(`Creating ${libName}...`);
+  return exec(`ng g library ${libName} --prefix ngx`)
+    .then(() => {
+      console.log(`Library ${libName} created.`);
+    })
+}
+
+const copyLibFiles = (libName, libDesc) => {
+  const files = [
+    ['LICENSE'],
+    ['README.md'],
+    ['wallaby.js'],
+    ['tsconfig.wallaby.spec.json'],
+    ['src', 'wallabyTest.ts']
+  ];
+  const copyReplace = (fname, libName) => {
+
+    const src = path.join(process.cwd(), 'lib-template', ...fname);
+    const dst = path.join(process.cwd(), 'projects', libName, ...fname);
+    const normalized = path.join(...fname);
+    console.log(`Creating ${normalized}`);
+    return fs.readFile(src, 'utf8')
+      .then(result => {
+        let mod = result.replace(/__LIB_NAME__/g, libName);
+        mod = mod.replace(/__LIB_DESCRIPTION__/g, libDesc);
+        return fs.outputFile(dst, mod);
+      })
+      .then(() => {
+        console.log(`${normalized} created.`);
+      })
+  }
+
+  const promises = files.map(fname => copyReplace(fname, libName));
+  return Promise.all(promises);
+
+}
+
+
+
+createLibrary(libName)
+  .then(() => {
+    return copyLibFiles(libName, libDesc)
+  })
+  .then(() => {
+    return fixPackage(libName, libDesc)
+  })
+  .then(() => {
+    return fixTSConfigLib(libName)
+  })
+  .then(() => {
+    return createDemo(libName, libDesc)
+  })
+  .then(() => {
+    return fixTSConfigMain(libName)
+  })

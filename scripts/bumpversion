@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+
+# bump the version
+cd projects/$1
+VERSION="$(npm version patch)"
+cd ../..
+
+echo "Version bumped to ${VERSION}."

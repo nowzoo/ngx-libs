@@ -1,65 +1,30 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@nowzoo/ngx-message": [
-        "dist/ngx-message"
-      ],
-      "@nowzoo/ngx-message/*": [
-        "dist/ngx-message/*"
-      ],
-      "@nowzoo/ngx-crumbs": [
-        "dist/ngx-crumbs"
-      ],
-      "@nowzoo/ngx-crumbs/*": [
-        "dist/ngx-crumbs/*"
-      ],
-      "@nowzoo/ngx-bootstrap-navbar": [
-        "dist/ngx-bootstrap-navbar"
-      ],
-      "@nowzoo/ngx-bootstrap-navbar/*": [
-        "dist/ngx-bootstrap-navbar/*"
-      ],
-      "@nowzoo/ngx-form": [
-        "dist/ngx-form"
-      ],
-      "@nowzoo/ngx-form/*": [
-        "dist/ngx-form/*"
-      ],
-      "ngx-sign-in-redirect": [
-        "dist/ngx-sign-in-redirect"
-      ],
-      "ngx-sign-in-redirect/*": [
-        "dist/ngx-sign-in-redirect/*"
-      ],
-      "ngx-route-helpers": [
-        "dist/ngx-route-helpers"
-      ],
-      "ngx-route-helpers/*": [
-        "dist/ngx-route-helpers/*"
-      ],
-      "ngx-bootstrap-modal": [
-        "dist/ngx-bootstrap-modal"
-      ],
-      "ngx-bootstrap-modal/*": [
-        "dist/ngx-bootstrap-modal/*"
-      ]
-    }
-  }
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"outDir": "./dist/out-tsc",
+		"sourceMap": true,
+		"declaration": false,
+		"module": "es2015",
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es5",
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"lib": [
+			"es2018",
+			"dom"
+		],
+		"paths": {
+			"@nowzoo/ngx-form": [
+				"dist/ngx-form"
+			],
+			"@nowzoo/ngx-form/*": [
+				"dist/ngx-form/*"
+			]
+		}
+	}
 }
