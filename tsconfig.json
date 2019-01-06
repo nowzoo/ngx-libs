@@ -47,6 +47,18 @@
       ],
       "ngx-sign-in-redirect/*": [
         "dist/ngx-sign-in-redirect/*"
+      ],
+      "ngx-route-helpers": [
+        "dist/ngx-route-helpers"
+      ],
+      "ngx-route-helpers/*": [
+        "dist/ngx-route-helpers/*"
+      ],
+      "ngx-bootstrap-modal": [
+        "dist/ngx-bootstrap-modal"
+      ],
+      "ngx-bootstrap-modal/*": [
+        "dist/ngx-bootstrap-modal/*"
       ]
     }
   }

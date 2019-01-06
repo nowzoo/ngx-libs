@@ -627,6 +627,76 @@
           }
         }
       }
+    },
+    "ngx-route-helpers": {
+      "root": "projects/ngx-route-helpers",
+      "sourceRoot": "projects/ngx-route-helpers/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-route-helpers/tsconfig.lib.json",
+            "project": "projects/ngx-route-helpers/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-route-helpers/src/test.ts",
+            "tsConfig": "projects/ngx-route-helpers/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-route-helpers/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-route-helpers/tsconfig.lib.json",
+              "projects/ngx-route-helpers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-bootstrap-modal": {
+      "root": "projects/ngx-bootstrap-modal",
+      "sourceRoot": "projects/ngx-bootstrap-modal/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-bootstrap-modal/tsconfig.lib.json",
+            "project": "projects/ngx-bootstrap-modal/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-bootstrap-modal/src/test.ts",
+            "tsConfig": "projects/ngx-bootstrap-modal/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-bootstrap-modal/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-bootstrap-modal/tsconfig.lib.json",
+              "projects/ngx-bootstrap-modal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-libs"

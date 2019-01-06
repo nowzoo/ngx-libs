@@ -7,7 +7,7 @@ const exec = util.promisify(require('child_process').exec);
 
 
 
-const build(libName) {
+const build = (libName) => {
   const libDir = path.join(process.cwd(), 'projects', libName);
   const distDir = path.join(process.cwd(), 'dist', libName);
   const docsDir = path.join(process.cwd(), 'build', libName, 'docs');
@@ -15,12 +15,12 @@ const build(libName) {
   const tarballDir = path.join(process.cwd(), 'build', libName, 'tarballs');
   let version;
   console.log(`Building ${libName}...`);
-  return fs.ensureDirectory(docsDir)
+  return fs.ensureDir(docsDir)
     .then(() => {
-      return fs.ensureDirectory(coverageDir);
+      return fs.ensureDir(coverageDir);
     })
     .then(() => {
-      return fs.ensureDirectory(tarballDir);
+      return fs.ensureDir(tarballDir);
     })
     .then(() => {
       return exec('npm version patch', {cwd: libDir});
@@ -46,14 +46,14 @@ const build(libName) {
 
 return build('ngx-bootstrap-navbar')
   .then(() => {
-    return build('ngx-crumbs'))
+    return build('ngx-crumbs')
   })
   .then(() => {
-    return build('ngx-form'))
+    return build('ngx-form')
   })
   .then(() => {
-    return build('ngx-message'))
+    return build('ngx-message')
   })
   .then(() => {
-    return build('ngx-sign-in-redirect'))
+    return build('ngx-sign-in-redirect')
   });

@@ -26,13 +26,13 @@ describe('NgxInvalidControlDirective', () => {
         expect(directive.control).toBe(null);
       });
       it('should be the FormControlDirective if it exists', () => {
-        const control = {};
+        const control: any = {};
         const d: any = {control: control};
         const directive = new NgxInvalidControlDirective(d, null, {} as any, {} as any);
         expect(directive.control).toBe(control);
       });
       it('should be the FormControlName if it exists', () => {
-        const control = {};
+        const control: any = {};
         const d: any = {control: control};
         const directive = new NgxInvalidControlDirective(null, d, {} as any, {} as any);
         expect(directive.control).toBe(control);
