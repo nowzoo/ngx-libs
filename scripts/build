@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# # get the coverage...
+# echo "Running tests and getting coverage for library ${1}..."
+# START=$(node -e 'console.log(new Date().getTime())')
+# ng test $1 --codeCoverage=true --watch=false
+# cp -r coverage docs/$1/
+# END=$(node -e 'console.log(new Date().getTime())')
+# DUR=$((( END - START )))
+# echo "Coverage built in ${DUR}ms."
+
 # bump the version
 cd projects/$1
 VERSION="$(npm version patch)"
@@ -51,13 +60,3 @@ rm -rf dist/$DEMONAME
 END=$(node -e 'console.log(new Date().getTime())')
 DUR=$((( END - START )))
 echo "Demo built in ${DUR}ms."
-
-# get the coverage...
-echo "Getting coverage for library ${1}..."
-START=$(node -e 'console.log(new Date().getTime())')
-DEMONAME="${1}-demo"
-ng test $1 --codeCoverage=true --watch=false
-cp -r coverage docs/$1/
-END=$(node -e 'console.log(new Date().getTime())')
-DUR=$((( END - START )))
-echo "Coverage built in ${DUR}ms."

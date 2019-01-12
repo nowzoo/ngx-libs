@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.my-invalid-control {
+  background-color: red;
+}
+
+.my-valid-control {
+  background-color: green;
+}
+
+.my-error {
+  font-size: 3em;
+  color: red;
+}
+
+.my-success {
+  font-size: 3em;
+  color: green;
+}

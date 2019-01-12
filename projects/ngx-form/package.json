@@ -1,12 +1,12 @@
 {
 	"name": "@nowzoo/ngx-form",
-	"version": "0.1.9",
+	"version": "1.0.2",
 	"peerDependencies": {
 		"@angular/common": "^7.1.0",
 		"@angular/core": "^7.1.0",
 		"@angular/forms": "^7.1.0"
 	},
-	"description": "Error components for Angular Reactive forms.",
+	"description": "Control validity directives and components for Angular forms.",
 	"license": "MIT",
 	"repository": {
 		"type": "git",

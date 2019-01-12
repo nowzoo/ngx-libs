@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+
+
+
+
+
+echo "Publishing library ${1}..."
+START=$(node -e 'console.log(new Date().getTime())')
+cd dist/$1
+npm publish --access public
+cd ../..
+
+END=$(node -e 'console.log(new Date().getTime())')
+DUR=$((( END - START )))
+echo "Library published in ${DUR}ms."

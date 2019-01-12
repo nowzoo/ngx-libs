@@ -1,0 +1,18 @@
+
+<form [formGroup]="fg">
+  <div class="form-group" ngxControlValidity #nameValidity="ngxControlValidity">
+    <label for="options-provider-demo-name">Name</label>
+    <input
+      id="options-provider-demo-name"
+      type="text"
+      formControlName="name"
+      ngxControlInvalidClass
+      ngxControlValidClass
+      class="form-control form-control-lg">
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-success>Hello, {{fg.get('name').value}}!</ngx-control-success>
+    <small class="form-text text-muted">
+      Validity: {{nameValidity.validity$ | async | json}}
+    </small>
+  </div>
+</form>

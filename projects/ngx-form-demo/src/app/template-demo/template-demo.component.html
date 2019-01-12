@@ -1,0 +1,40 @@
+<div class="form-group" ngxControlValidity #emailValidity="ngxControlValidity">
+  <label for="template-demo-email">Email</label>
+  <input
+    id="template-demo-email"
+    type="text"
+    [(ngModel)]="email"
+    required
+    email
+    ngxControlInvalidClass
+    ngxControlValidClass
+    class="form-control form-control-lg">
+  <ngx-control-error key="required">Required.</ngx-control-error>
+  <ngx-control-error key="email">Invalid email.</ngx-control-error>
+  <ngx-control-success>That's a valid email!</ngx-control-success>
+  <small class="form-text text-muted">
+    Validity: {{emailValidity.validity$ | async | json}}
+  </small>
+</div>
+
+<div class="form-group" ngxControlValidity showValidityOn="dirty" #tosValidity="ngxControlValidity">
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="true"
+      id="template-demo-check"
+      [(ngModel)]="tos"
+      ngxControlInvalidClass
+      ngxControlValidClass
+      required>
+    <label class="form-check-label" for="template-demo-check">
+      I agree to your onerous terms of service.
+    </label>
+  </div>
+  <ngx-control-error key="required">You really must agree to send us Junior.</ngx-control-error>
+  <ngx-control-success>That's just great! We're sure Junior will enjoy work in the salt mine.</ngx-control-success>
+  <small class="form-text text-muted">
+    Validity: {{tosValidity.validity$ | async | json}}
+  </small>
+</div>

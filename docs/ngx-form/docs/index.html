@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-form 0.1.9 Documentation</title>
+        <title>@nowzoo/ngx-form 1.0.2 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@nowzoo/ngx-form 0.1.9 Documentation</a>
+            <a href="./" class="navbar-brand">@nowzoo/ngx-form 1.0.2 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -31,13 +31,102 @@
                    <div class="content-data">
 
 <h1 id="-nowzoo-ngx-form">@nowzoo/ngx-form</h1>
-<p>Various components for showing form errors.</p>
+<p>Control validity directives and components for Angular forms.</p>
 <p><a href="https://nowzoo.github.io/ngx-libs/ngx-form/">Demo</a>
 |
 <a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app">Demo Source Code</a></p>
 <p><a href="https://nowzoo.github.io/ngx-libs/ngx-form/docs/">Documentation</a></p>
 <h2 id="quick-start">Quick start</h2>
-<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-form --save</code></pre></div><h3 id="contributing">Contributing</h3>
+<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-form --save</code></pre></div><p>Import the module...</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxFormModule } from &#39;&#64;nowzoo/ngx-form&#39;;
+
+&#64;NgModule({
+  //...
+  imports: [
+    //...
+    ReactiveFormsModule, // or FormsModule
+    NgxFormModule
+  ],
+  //...
+})
+export class AppModule { }</code></pre></div><p>Use the directives and components...</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;!--
+The ngxControlValidity directive is the wrapper.
+It&#39;s required for the other components and directives to work.
+Also, it expects to find an NgControl (ngModel or a reactive control) inside.
+It will fail silently if no NgControl is found.
+--&gt;
+&lt;div class=&quot;form-group&quot; ngxControlValidity #emailValidity=&quot;ngxControlValidity&quot;&gt;
+  &lt;label for=&quot;reactive-demo-email&quot;&gt;Email&lt;/label&gt;
+  &lt;!--
+  ngxControlInvalidClass and ngxControlValidClass add
+  the Bootstrap &#39;is-invalid&#39; and &#39;is-valid&#39; classes
+  to the control element.
+  Both are optional.
+  --&gt;
+  &lt;input
+    id=&quot;reactive-demo-email&quot;
+    type=&quot;text&quot;
+    [formControl]=&quot;fcEmail&quot;
+    ngxControlInvalidClass
+    ngxControlValidClass
+    class=&quot;form-control form-control-lg&quot;&gt;
+  &lt;!--
+  show the error for a key...
+  --&gt;
+  &lt;ngx-control-error key=&quot;required&quot;&gt;Required.&lt;/ngx-control-error&gt;
+  &lt;ngx-control-error key=&quot;email&quot;&gt;Invalid email.&lt;/ngx-control-error&gt;
+  &lt;!--
+  show that the control is valid...
+  --&gt;
+  &lt;ngx-control-success&gt;That&#39;s a valid email!&lt;/ngx-control-success&gt;
+  &lt;!--
+  ngxControlValidity exposes a
+  validity$ observable that you can use
+  elsewhere. This is one of:
+  - &quot;hidden&quot; (don&#39;t show the validity)
+  - &quot;invalid&quot;
+  - &quot;valid&quot;
+  --&gt;
+  &lt;small class=&quot;form-text text-muted&quot;&gt;
+    Validity: {{emailValidity.validity$ | async | json}}
+  &lt;/small&gt;
+&lt;/div&gt;
+
+&lt;!--
+You can control when validity is shown
+with the showValidityOn input for ngxControlValidity.
+Valid values are:
+- &quot;touched&quot; (when the input has been blurred, the default)
+- &quot;dirty&quot; (when the input has been changed)
+- &quot;always&quot;
+This controls the behavior of all the components
+and directives wrapped by the ngxControlValidity
+directive.
+--&gt;
+&lt;div class=&quot;form-group&quot;
+ngxControlValidity
+showValidityOn=&quot;dirty&quot; #tosValidity=&quot;ngxControlValidity&quot;&gt;
+  &lt;div class=&quot;form-check&quot;&gt;
+    &lt;input
+      class=&quot;form-check-input&quot;
+      type=&quot;checkbox&quot;
+      value=&quot;true&quot;
+      id=&quot;reactive-demo-check&quot;
+      [formControl]=&quot;fcTos&quot;
+      ngxControlInvalidClass
+      ngxControlValidClass&gt;
+    &lt;label class=&quot;form-check-label&quot; for=&quot;reactive-demo-check&quot;&gt;
+      I agree to your onerous terms of service.
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;ngx-control-error key=&quot;required&quot;&gt;You really must agree to send us Junior.&lt;/ngx-control-error&gt;
+  &lt;ngx-control-success&gt;That&#39;s just great! We&#39;re sure Junior will enjoy work in the salt mine.&lt;/ngx-control-success&gt;
+  &lt;small class=&quot;form-text text-muted&quot;&gt;
+    Validity: {{tosValidity.validity$ | async | json}}
+  &lt;/small&gt;
+&lt;/div&gt;
+</code></pre></div><h3 id="contributing">Contributing</h3>
 <p>See the <a href="https://github.com/nowzoo/ngx-libs">repo README</a> for how to test and build this library.</p>
 
 
