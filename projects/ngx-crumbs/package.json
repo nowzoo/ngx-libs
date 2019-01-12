@@ -1,0 +1,15 @@
+{
+	"name": "@nowzoo/ngx-crumbs",
+	"version": "0.0.1",
+	"peerDependencies": {
+		"@angular/common": "^7.1.0",
+		"@angular/core": "^7.1.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-crumbs"
+}

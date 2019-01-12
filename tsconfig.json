@@ -24,6 +24,12 @@
 			],
 			"@nowzoo/ngx-form/*": [
 				"dist/ngx-form/*"
+			],
+			"@nowzoo/ngx-crumbs": [
+				"dist/ngx-crumbs"
+			],
+			"@nowzoo/ngx-crumbs/*": [
+				"dist/ngx-crumbs/*"
 			]
 		}
 	}

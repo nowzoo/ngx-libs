@@ -140,6 +140,144 @@
           }
         }
       }
+    },
+    "ngx-crumbs": {
+      "root": "projects/ngx-crumbs",
+      "sourceRoot": "projects/ngx-crumbs/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-crumbs/tsconfig.lib.json",
+            "project": "projects/ngx-crumbs/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-crumbs/src/test.ts",
+            "tsConfig": "projects/ngx-crumbs/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-crumbs/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-crumbs/tsconfig.lib.json",
+              "projects/ngx-crumbs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-crumbs-demo": {
+      "root": "projects/ngx-crumbs-demo/",
+      "sourceRoot": "projects/ngx-crumbs-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-crumbs-demo",
+            "index": "projects/ngx-crumbs-demo/src/index.html",
+            "main": "projects/ngx-crumbs-demo/src/main.ts",
+            "polyfills": "projects/ngx-crumbs-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-crumbs-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-crumbs-demo/src/favicon.ico",
+              "projects/ngx-crumbs-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-crumbs-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-crumbs-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-crumbs-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-crumbs-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-crumbs-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-crumbs-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-crumbs-demo/src/test.ts",
+            "polyfills": "projects/ngx-crumbs-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-crumbs-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-crumbs-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-crumbs-demo/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-crumbs-demo/src/favicon.ico",
+              "projects/ngx-crumbs-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-crumbs-demo/tsconfig.app.json",
+              "projects/ngx-crumbs-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-form"

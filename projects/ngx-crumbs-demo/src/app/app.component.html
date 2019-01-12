@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-4">
+    <ul>
+      <li>
+        <a [routerLink]="['/']">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/', 'dynamic']">Route Dynamic Title</a>
+      </li>
+      <li>
+        <a [routerLink]="['/', 'parent']">Parent</a>
+        <ul>
+          <li>
+            <a [routerLink]="['/', 'parent', 'child']">Child</a>
+            <ul>
+              <li>
+                <a [routerLink]="['/', 'parent', 'child', 'grandchild']">Grandchild</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-8">
+    <ngx-crumbs></ngx-crumbs>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<ngx-crumbs-window-title></ngx-crumbs-window-title>
