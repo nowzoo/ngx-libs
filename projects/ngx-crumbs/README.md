@@ -1,6 +1,6 @@
 # @nowzoo/ngx-crumbs
 
-undefined
+Router-based breadcrumb and window title components for Angular.
 
 [Demo](https://nowzoo.github.io/ngx-libs/ngx-crumbs/)
 |

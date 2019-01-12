@@ -1,6 +1,7 @@
 {
 	"name": "@nowzoo/ngx-crumbs",
-	"version": "0.0.1",
+	"description": "Router-based breadcrumb and window title components for Angular.",
+	"version": "1.0.1",
 	"peerDependencies": {
 		"@angular/common": "^7.1.0",
 		"@angular/core": "^7.1.0"
