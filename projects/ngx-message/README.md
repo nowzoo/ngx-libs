@@ -9,6 +9,8 @@ A service and component for displaying app messages.
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-message/docs/)
 
 
+<iframe src="https://stackblitz.com/edit/angular-d6x6at?embed=1&file=src/app/demo.component.ts"></iframe>
+
 ## Quick start
 
 ```bash
