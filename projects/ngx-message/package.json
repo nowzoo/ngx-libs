@@ -1,6 +1,6 @@
 {
 	"name": "@nowzoo/ngx-message",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "A service and component for displaying app messages.",
 	"peerDependencies": {
 		"@angular/common": "^7.1.0",
