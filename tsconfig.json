@@ -30,6 +30,12 @@
 			],
 			"@nowzoo/ngx-crumbs/*": [
 				"dist/ngx-crumbs/*"
+			],
+			"@nowzoo/ngx-message": [
+				"dist/ngx-message"
+			],
+			"@nowzoo/ngx-message/*": [
+				"dist/ngx-message/*"
 			]
 		}
 	}

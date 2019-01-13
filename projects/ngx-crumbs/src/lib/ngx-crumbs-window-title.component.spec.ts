@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NGX_CRUMBS_CONFIG, INgxCrumbsConfig } from './shared';
 import { RouterModule } from '@angular/router';
 import { NgxCrumbsWindowTitleComponent } from './ngx-crumbs-window-title.component';
@@ -42,29 +42,10 @@ describe('NgxCrumbsWindowTitleComponent', () => {
     it('should have config', () => {
       expect(component.config).toEqual(config);
     });
-    it('should have service', () => {
-      expect(component.service).toEqual(service);
-    });
-    it('should have title', () => {
-      expect(component.title).toEqual(title);
-    });
-    it('should have el', () => {
-      expect(component.el).toBeTruthy();
-    });
-    it('should have changes', () => {
-      expect(component.changes).toBeTruthy();
-    });
+
   });
 
   describe('ngOnInit() and ngOnDestroy()', () => {
-    let changes;
-    beforeEach(() => {
-      changes = {
-        observe: jasmine.createSpy(),
-        disconnect: jasmine.createSpy()
-      };
-      spyOnProperty(component, 'changes').and.returnValue(changes);
-    });
     it('should subscribe and unsubscribe from service.crumbs$', () => {
       expect(crumbs$.observers.length).toBe(0);
       component.ngOnInit();
@@ -72,11 +53,19 @@ describe('NgxCrumbsWindowTitleComponent', () => {
       component.ngOnDestroy();
       expect(crumbs$.observers.length).toBe(0);
     });
-    it('should disconnect from the observer on destroy', () => {
-      component.ngOnInit();
-      component.ngOnDestroy();
-      expect(changes.disconnect).toHaveBeenCalled();
-    });
+    it('should subscribe and unsubscribe from observe', () => {
 
+    });
   });
+  it('should ', fakeAsync(() => {
+    component.ngOnInit();
+    fixture.debugElement.nativeElement.innerText = 'foo';
+    tick();
+    // setTimeout(() => {
+    //   expect(title.setTitle).toHaveBeenCalledWith('foo');
+    // }, 1000);
+    // tick(1000);
+
+  }));
+
 });

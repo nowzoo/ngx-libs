@@ -1,0 +1,75 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/_mixins";
+@import "~bootstrap/scss/_alert";
+
+
+
+.ngx-message-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.spin {
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ngx-message-alert {
+  display: flex;
+  align-items: center;
+  padding: .75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+
+  &.wait {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+  }
+  &.warn {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  &.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+}
+
+.ngx-message-container-modal, .ngx-message-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+
+  &.ngx-message-container-modal {
+    z-index: $zindex-tooltip + 1;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .25);
+  }
+  &.ngx-message-container {
+    z-index: $zindex-tooltip + 2;
+    width: 320px;
+    padding: 20px;
+    transition: transform .2s;
+
+  }
+  &.shown {
+    transform: translateX(0%);
+  }
+}

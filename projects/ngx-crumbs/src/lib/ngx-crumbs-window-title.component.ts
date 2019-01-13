@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, OnDestroy, ElementRef, HostBinding  } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, ElementRef, HostBinding, Input  } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,6 +19,8 @@ export class NgxCrumbsWindowTitleComponent implements OnInit, OnDestroy {
   private _changes: MutationObserver = null;
   private _ngUnsubscribe: Subject<void> = new Subject<void>();
   @HostBinding('attr.aria-hidden') ariaHidden = true;
+  @Input() showAll = false;
+  @Input() reverse = true;
   crumbs: ICrumb[];
   constructor(
     @Inject(NGX_CRUMBS_CONFIG) private _config: INgxCrumbsConfig,
@@ -31,53 +33,43 @@ export class NgxCrumbsWindowTitleComponent implements OnInit, OnDestroy {
     return this._config;
   }
 
-  get service(): NgxCrumbsService {
-    return this._service;
-  }
-
-  get title(): Title {
-    return this._title;
-  }
-
-  get el(): HTMLElement {
-    return this._elementRef.nativeElement;
-  }
-
-  get changes(): MutationObserver {
-    if (! this._changes) {
-      this._changes = new MutationObserver(() => {
-        this._update();
-      });
-    }
-    return this._changes;
-  }
-
-
-
-
   ngOnInit() {
-    this.changes.observe(this.el, {
+    this._changes = new MutationObserver(() => {
+      this._title.setTitle(this._elementRef.nativeElement.innerText);
+    });
+    this._changes.observe(this._elementRef.nativeElement, {
       childList: true,
       characterData: true,
       subtree: true
     });
 
-    this.service.crumbs$
+    this._service.crumbs$
       .pipe(takeUntil(this._ngUnsubscribe))
       .subscribe(val => {
-        this.crumbs = val.slice(0).reverse();
+        let crumbs = val.slice(0);
+        if (this.reverse) {
+          crumbs = crumbs.reverse();
+        }
+        if (! this.showAll) {
+          const filtered = [];
+          if (crumbs.length > 0) {
+            filtered.push(crumbs[0]);
+          }
+          if (crumbs.length > 1) {
+            filtered.push(crumbs[crumbs.length - 1]);
+          }
+          this.crumbs = filtered;
+        } else {
+          this.crumbs = crumbs;
+        }
       });
 
   }
 
   ngOnDestroy() {
-    this.changes.disconnect();
+    this._changes.disconnect();
     this._ngUnsubscribe.next();
     this._ngUnsubscribe.complete();
-  }
-
-  private _update() {
-    this.title.setTitle(this.el.innerText);
   }
 
 }

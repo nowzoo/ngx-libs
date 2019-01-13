@@ -1,0 +1,16 @@
+{
+	"name": "@nowzoo/ngx-message",
+	"version": "1.0.1",
+	"description": "A service and component for displaying app messages.",
+	"peerDependencies": {
+		"@angular/common": "^7.1.0",
+		"@angular/core": "^7.1.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-message"
+}
