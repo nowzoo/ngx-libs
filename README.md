@@ -33,5 +33,5 @@ Control validity directives and components for Angular forms.
 [Demo](https://nowzoo.github.io/ngx-libs/ngx-form/)
 |
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app)
-
+|
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-form/docs/)
