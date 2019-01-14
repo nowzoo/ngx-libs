@@ -14,7 +14,7 @@ A service and component for displaying app messages.
 npm i @nowzoo/ngx-message --save
 ```
 
-Import the module...
+Import the module, calling `forRoot()`. This should probably be in your main `app` module.
 ```typescript
 import { NgxMessageModule } from '@nowzoo/ngx-message';
 @NgModule({
@@ -25,7 +25,7 @@ import { NgxMessageModule } from '@nowzoo/ngx-message';
 export class AppModule { }
 ```
 
-Insert the component at a high level in your app...
+Insert an instance of `NgxMessageComponent` at a high level in your app. This is intended to be a singleton.
 
 ```html
 <!-- app.component.html -->
@@ -33,7 +33,7 @@ Insert the component at a high level in your app...
 <ngx-message></ngx-message>
 ```
 
-Use the service to display messages...
+Use the service in components to display messages...
 ```typescript
 import { NgxMessageService } from '@nowzoo/ngx-message';
 
@@ -59,51 +59,9 @@ export class MyComponent {
 
 ```
 
-### API
+### Component Styles
 
-#### const NGX_MESSAGE_HIDE_DELAY
-```ts
-const NGX_MESSAGE_HIDE_DELAY: InjectionToken<number>
-```
-
-How long in milliseconds success and warn messages stay visible before being automatically hidden. Default: `3000`. You can provide a different value:
-
-```ts
-{provide: NGX_MESSAGE_HIDE_DELAY, useValue: 5000}
-```
-
-#### enum NgxMessageContext
-
-```ts
-enum NgxMessageContext  {
-  warn = 'warn',
-  success = 'success',
-  wait = 'wait'
-}
-```
-
-#### interface INgxMessage
-
-```ts
-interface INgxMessage {
-  message: string;
-  context: NgxMessageContext;
-}
-```
-
-#### NgxMessageService
-
-##### Properties
-- `message$: Observable<INgxMessage>`
-
-##### Methods
-- `show(message: string, context: NgxMessageContext, hide: boolean)`
-- `hide()`
-- `wait(message: string)`
-- `success(message: string)`
-- `warn(message: string)`
-
-#### NgxMessageComponent
+The message component styles are based on Bootstrap alerts and Font Awesome. The styles are packaged with the component. You do not have to add Bootstrap or Font Awesome styles. If you want different styling, animations, layout or icons, just extend `NgxMessageComponent` with a different template and stylesheet.
 
 ### Contributing
 
