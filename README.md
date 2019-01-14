@@ -60,3 +60,15 @@ Simple date and time inputs. No calendars or fancy controls or polyfills. They j
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-date-time-inputs-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-date-time-inputs/docs/)
+
+# @nowzoo/ngx-bootstrap-modal
+
+Service for creating and showing Bootstrap modals from templates.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-bootstrap-modal)
+|
+[Demo](https://nowzoo.github.io/ngx-libs/ngx-bootstrap-modal/)
+|
+[Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-bootstrap-modal-demo/src/app)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-bootstrap-modal/docs/)

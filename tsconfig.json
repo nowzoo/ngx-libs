@@ -48,6 +48,12 @@
 			],
 			"@nowzoo/ngx-date-time-inputs/*": [
 				"dist/ngx-date-time-inputs/*"
+			],
+			"@nowzoo/ngx-bootstrap-modal": [
+				"dist/ngx-bootstrap-modal"
+			],
+			"@nowzoo/ngx-bootstrap-modal/*": [
+				"dist/ngx-bootstrap-modal/*"
 			]
 		}
 	}
