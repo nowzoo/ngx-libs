@@ -61,7 +61,9 @@ export class MyComponent {
 
 ### Component Styles
 
-The message component styles are based on Bootstrap alerts and Font Awesome. The styles are packaged with the component. You do not have to add Bootstrap or Font Awesome styles. If you want different styling, animations, layout or icons, just extend `NgxMessageComponent` with a different template and stylesheet.
+The message component styles are based on Bootstrap alerts and Font Awesome. The styles are packaged with the component. So...
+ - You do not have to add Bootstrap or Font Awesome styles.
+ - If you want different styling, animations, layout or icons, just extend `NgxMessageComponent` with a different template and stylesheet.
 
 ### Contributing
 
