@@ -36,6 +36,12 @@
 			],
 			"@nowzoo/ngx-message/*": [
 				"dist/ngx-message/*"
+			],
+			"@nowzoo/ngx-sign-in-redirect": [
+				"dist/ngx-sign-in-redirect"
+			],
+			"@nowzoo/ngx-sign-in-redirect/*": [
+				"dist/ngx-sign-in-redirect/*"
 			]
 		}
 	}

@@ -416,6 +416,144 @@
           }
         }
       }
+    },
+    "ngx-sign-in-redirect": {
+      "root": "projects/ngx-sign-in-redirect",
+      "sourceRoot": "projects/ngx-sign-in-redirect/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-sign-in-redirect/tsconfig.lib.json",
+            "project": "projects/ngx-sign-in-redirect/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-sign-in-redirect/src/test.ts",
+            "tsConfig": "projects/ngx-sign-in-redirect/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-sign-in-redirect/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-sign-in-redirect/tsconfig.lib.json",
+              "projects/ngx-sign-in-redirect/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-sign-in-redirect-demo": {
+      "root": "projects/ngx-sign-in-redirect-demo/",
+      "sourceRoot": "projects/ngx-sign-in-redirect-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-sign-in-redirect-demo",
+            "index": "projects/ngx-sign-in-redirect-demo/src/index.html",
+            "main": "projects/ngx-sign-in-redirect-demo/src/main.ts",
+            "polyfills": "projects/ngx-sign-in-redirect-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-sign-in-redirect-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-sign-in-redirect-demo/src/favicon.ico",
+              "projects/ngx-sign-in-redirect-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-sign-in-redirect-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-sign-in-redirect-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-sign-in-redirect-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-sign-in-redirect-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-sign-in-redirect-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-sign-in-redirect-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-sign-in-redirect-demo/src/test.ts",
+            "polyfills": "projects/ngx-sign-in-redirect-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-sign-in-redirect-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-sign-in-redirect-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-sign-in-redirect-demo/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-sign-in-redirect-demo/src/favicon.ico",
+              "projects/ngx-sign-in-redirect-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-sign-in-redirect-demo/tsconfig.app.json",
+              "projects/ngx-sign-in-redirect-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-form"

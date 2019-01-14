@@ -1,0 +1,16 @@
+{
+	"name": "@nowzoo/ngx-sign-in-redirect",
+	"version": "1.0.0",
+	"peerDependencies": {
+		"@angular/common": "^7.1.0",
+		"@angular/core": "^7.1.0"
+	},
+	"description": "A service for handling sign in redirects.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-sign-in-redirect"
+}

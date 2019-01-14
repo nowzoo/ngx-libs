@@ -35,3 +35,16 @@ Control validity directives and components for Angular forms.
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-form/docs/)
+
+
+# @nowzoo/ngx-sign-in-redirect
+
+A service for handling sign in redirects.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-sign-in-redirect)
+|
+[Demo](https://nowzoo.github.io/ngx-libs/ngx-sign-in-redirect/)
+|
+[Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-sign-in-redirect-demo/src/app)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-sign-in-redirect/docs/)
