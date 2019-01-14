@@ -32,7 +32,9 @@
 
 <h1 id="-nowzoo-ngx-form">@nowzoo/ngx-form</h1>
 <p>Control validity directives and components for Angular forms.</p>
-<p><a href="https://nowzoo.github.io/ngx-libs/ngx-form/">Demo</a>
+<p><a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form">Project &amp; README</a>
+|
+<a href="https://nowzoo.github.io/ngx-libs/ngx-form/">Demo</a>
 |
 <a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app">Demo Source Code</a></p>
 <p><a href="https://nowzoo.github.io/ngx-libs/ngx-form/docs/">Documentation</a></p>
@@ -127,7 +129,20 @@ showValidityOn=&quot;dirty&quot; #tosValidity=&quot;ngxControlValidity&quot;&gt;
   &lt;/small&gt;
 &lt;/div&gt;
 </code></pre></div><h3 id="contributing">Contributing</h3>
-<p>See the <a href="https://github.com/nowzoo/ngx-libs">repo README</a> for how to test and build this library.</p>
+<p>Clone the main repo and npm install...</p>
+<div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/nowzoo/ngx-libs.git
+cd ngx-libs
+npm i</code></pre></div><p>The library files are in <code>projects/ngx-form</code>.</p>
+<p>The demo code is in <code>projects/ngx-form-demo</code>.</p>
+<p>Building the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng build ngx-form</code></pre></div><p>Testing the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng test ngx-form</code></pre></div><p>To test with Wallaby, use the <code>wallaby.js</code> config at the root of the project directory.</p>
+<p>Serving the demo...</p>
+<div><pre class="line-numbers"><code class="language-bash"># make sure you&#39;ve built the library locally first with ng build ngx-form
+ng serve ngx-form-demo</code></pre></div><h3 id="issues">Issues</h3>
+<p>Please submit issues to the main repo <a href="https://github.com/nowzoo/ngx-libs/issues">here</a>.</p>
+<h3 id="license">License</h3>
+<p><a href="https://github.com/nowzoo/ngx-libs/blob/master/projects/ngx-form/LICENSE">MIT</a></p>
 
 
 

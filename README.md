@@ -23,3 +23,15 @@ A service and component for displaying app messages.
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-message-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-message/docs/)
+
+## @nowzoo/ngx-form
+
+Control validity directives and components for Angular forms.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form)
+|
+[Demo](https://nowzoo.github.io/ngx-libs/ngx-form/)
+|
+[Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app)
+
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-form/docs/)

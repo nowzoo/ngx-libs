@@ -2,6 +2,8 @@
 
 Control validity directives and components for Angular forms.
 
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form)
+|
 [Demo](https://nowzoo.github.io/ngx-libs/ngx-form/)
 |
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-demo/src/app)
@@ -117,4 +119,36 @@ showValidityOn="dirty" #tosValidity="ngxControlValidity">
 
 ### Contributing
 
-See the [repo README](https://github.com/nowzoo/ngx-libs) for how to test and build this library.
+Clone the main repo and npm install...
+```bash
+git clone https://github.com/nowzoo/ngx-libs.git
+cd ngx-libs
+npm i
+```
+
+The library files are in `projects/ngx-form`.
+
+The demo code is in `projects/ngx-form-demo`.
+
+Building the library...
+```bash
+ng build ngx-form
+```
+
+Testing the library...
+```bash
+ng test ngx-form
+```
+To test with Wallaby, use the `wallaby.js` config at the root of the project directory.
+
+Serving the demo...
+```bash
+# make sure you've built the library locally first with ng build ngx-form
+ng serve ngx-form-demo
+```
+
+### Issues
+Please submit issues to the main repo [here](https://github.com/nowzoo/ngx-libs/issues).
+
+### License
+[MIT](https://github.com/nowzoo/ngx-libs/blob/master/projects/ngx-form/LICENSE)

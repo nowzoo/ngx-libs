@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
 
-
-
-
-
-
 echo "Publishing library ${1}..."
 START=$(node -e 'console.log(new Date().getTime())')
 cd dist/$1
