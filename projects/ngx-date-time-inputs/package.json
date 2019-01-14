@@ -1,0 +1,19 @@
+{
+	"name": "@nowzoo/ngx-date-time-inputs",
+	"version": "1.0.0",
+	"peerDependencies": {
+		"@angular/common": "^7.1.0",
+		"@angular/core": "^7.1.0",
+		"@angular/forms": "^7.0.0",
+    "lodash-es": "^4.17.11",
+    "moment": "^2.22.2"
+	},
+	"description": "Simple date and time inputs. No calendars or fancy controls or polyfills. They just guess the date or time the user means. Forgiving and (more or less) locale-aware.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-date-time-inputs"
+}

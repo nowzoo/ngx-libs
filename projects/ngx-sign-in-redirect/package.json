@@ -1,9 +1,10 @@
 {
 	"name": "@nowzoo/ngx-sign-in-redirect",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"peerDependencies": {
 		"@angular/common": "^7.1.0",
-		"@angular/core": "^7.1.0"
+		"@angular/core": "^7.1.0",
+		"@angular/router": "^7.1.0"
 	},
 	"description": "A service for handling sign in redirects.",
 	"license": "MIT",

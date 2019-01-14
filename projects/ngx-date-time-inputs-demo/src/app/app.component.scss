@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+.app-footer {
+  margin-top: 4rem;
+  padding: 1em 0;
+  background-color: $primary;
+  color: #FFF;
+  a {
+    color: #FFF;
+  }
+}

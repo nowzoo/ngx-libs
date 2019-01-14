@@ -42,6 +42,12 @@
 			],
 			"@nowzoo/ngx-sign-in-redirect/*": [
 				"dist/ngx-sign-in-redirect/*"
+			],
+			"@nowzoo/ngx-date-time-inputs": [
+				"dist/ngx-date-time-inputs"
+			],
+			"@nowzoo/ngx-date-time-inputs/*": [
+				"dist/ngx-date-time-inputs/*"
 			]
 		}
 	}

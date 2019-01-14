@@ -48,3 +48,15 @@ A service for handling sign in redirects.
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-sign-in-redirect-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-sign-in-redirect/docs/)
+
+## @nowzoo/ngx-date-time-inputs
+
+Simple date and time inputs. No calendars or fancy controls or polyfills. They just guess the date or time the user means. Forgiving and (more or less) locale-aware.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-date-time-inputs)
+|
+[Demo](https://nowzoo.github.io/ngx-libs/ngx-date-time-inputs/)
+|
+[Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-date-time-inputs-demo/src/app)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-date-time-inputs/docs/)

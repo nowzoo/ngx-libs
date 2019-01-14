@@ -1,0 +1,9 @@
+<input
+  #input
+  type="text"
+  [attr.id]="inputId"
+  [formControl]="control"
+  [attr.placeholder]="inputPlaceholder"
+  [attr.class]="inputClass"
+  (blur)="handleInputChange()"
+  (keyup.enter)="input.blur()">
