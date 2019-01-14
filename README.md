@@ -37,7 +37,7 @@ Control validity directives and components for Angular forms.
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-form/docs/)
 
 
-# @nowzoo/ngx-sign-in-redirect
+## @nowzoo/ngx-sign-in-redirect
 
 A service for handling sign in redirects.
 
