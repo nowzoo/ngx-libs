@@ -6,7 +6,7 @@ import { ICrumb } from './shared';
   selector: '[ngxCrumb]'
 })
 export class NgxCrumbDirective implements OnInit, OnDestroy, ICrumb {
-  @Input() ngxCrumb: string[];
+  @Input() ngxCrumb: string[] = null;
   constructor(
     private _route: ActivatedRoute,
     private _templateRef: TemplateRef<any>,
@@ -26,7 +26,18 @@ export class NgxCrumbDirective implements OnInit, OnDestroy, ICrumb {
   }
 
   get url(): string[] {
-    return this.ngxCrumb;
+    if (this.ngxCrumb) {
+      return this.ngxCrumb;
+    }
+    const slugs: string[] = [];
+    let route = this.route;
+    while (route) {
+      slugs.push(...route.url.map(s => s.path));
+      route = route.parent;
+    }
+    return slugs.filter(s => {
+      return typeof s === 'string' && s.length > 0;
+    }).reverse();
   }
 
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-crumbs 1.0.1 Documentation</title>
+        <title>@nowzoo/ngx-crumbs 1.1.0 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@nowzoo/ngx-crumbs 1.0.1 Documentation</a>
+            <a href="./" class="navbar-brand">@nowzoo/ngx-crumbs 1.1.0 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -31,14 +31,41 @@
                    <div class="content-data">
 
 <h1 id="-nowzoo-ngx-crumbs">@nowzoo/ngx-crumbs</h1>
-<p>Router-based breadcrumb and window title components for Angular.</p>
-<p><a href="https://nowzoo.github.io/ngx-libs/ngx-crumbs/">Demo</a>
+<p>Router-based breadcrumb and window title components.</p>
+<p><a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-crumbs">Project &amp; README</a>
 |
-<a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-crumbs-demo/src/app">Demo Source Code</a></p>
-<p><a href="https://nowzoo.github.io/ngx-libs/ngx-crumbs/docs/">Documentation</a></p>
+<a href="https://nowzoo.github.io/ngx-libs/ngx-crumbs/">Demo</a>
+|
+<a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-crumbs-demo/src/app">Demo Source Code</a>
+|
+<a href="https://nowzoo.github.io/ngx-libs/ngx-crumbs/docs/">Documentation</a></p>
 <h2 id="quick-start">Quick start</h2>
-<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-crumbs --save</code></pre></div><h3 id="contributing">Contributing</h3>
-<p>See the <a href="https://github.com/nowzoo/ngx-libs">repo README</a> for how to test and build this library.</p>
+<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-crumbs --save</code></pre></div><p>Import the module...</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxCrumbsModule } from &#39;&#64;nowzoo/ngx-crumbs&#39;;
+&#64;NgModule({
+  imports: [
+    NgxCrumbsModule.forRoot()
+  ],
+})
+export class AppModule { }</code></pre></div><p>Add breadcrumbs to your route components using <code>ng-template</code> and the <code>ngxCrumb</code> directive. The content of the crumb can be dynamic...</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ng-template ngxCrumb&gt;Dynamic: {{counter}}&lt;/ng-template&gt;</code></pre></div><p>To have the crumbs automatically update the window title, add the <code>NgxCrumbsWindowTitleComponent</code> to your app component...</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ngx-crumbs-window-title&gt;&lt;/ngx-crumbs-window-title&gt;</code></pre></div><p>By default the window title component displays breadcrumbs in reverse order and limited to the first and last ones. You can change this with the <code>showAll</code> and <code>reverse</code> inputs.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ngx-crumbs-window-title [showAll]=&quot;true&quot; [reverse]=&quot;false&quot;&gt;&lt;/ngx-crumbs-window-title&gt;</code></pre></div><p>To display Bootstrap-style breadcrumbs, use <code>NgxCrumbsComponent</code>...</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ngx-crumbs&gt;&lt;/ngx-crumbs&gt;</code></pre></div><h3 id="contributing">Contributing</h3>
+<p>Clone the main repo and npm install...</p>
+<div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/nowzoo/ngx-libs.git
+cd ngx-libs
+npm i</code></pre></div><p>The library files are in <code>projects/ngx-crumbs</code>.</p>
+<p>The demo code is in <code>projects/ngx-crumbs-demo</code>.</p>
+<p>Building the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng build ngx-crumbs</code></pre></div><p>Testing the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng test ngx-crumbs</code></pre></div><p>To test with Wallaby, use the <code>wallaby.js</code> config at the root of the project directory.</p>
+<p>Serving the demo...</p>
+<div><pre class="line-numbers"><code class="language-bash"># make sure you&#39;ve built the library locally first with ng build ngx-crumbs
+ng serve ngx-crumbs-demo</code></pre></div><h3 id="issues">Issues</h3>
+<p>Please submit issues to the main repo <a href="https://github.com/nowzoo/ngx-libs/issues">here</a>.</p>
+<h3 id="license">License</h3>
+<p><a href="https://github.com/nowzoo/ngx-libs/blob/master/projects/ngx-crumbs/LICENSE">MIT</a></p>
 
 
 

@@ -68,4 +68,30 @@ describe('NgxCrumbsWindowTitleComponent', () => {
 
   }));
 
+  it('should reverse the crumbs if reverse = true', () => {
+    component.reverse = true;
+    component.showAll = false;
+    component.ngOnInit();
+    crumbs$.next([{label: 'a'}, {label: 'b'}, {label: 'c'}]);
+    expect((component.crumbs[0] as any).label).toBe('c');
+    expect((component.crumbs[1] as any).label).toBe('a');
+  });
+  it('should not reverse the crumbs if reverse = false', () => {
+    component.reverse = false;
+    component.showAll = false;
+    component.ngOnInit();
+    crumbs$.next([{label: 'a'}, {label: 'b'}, {label: 'c'}]);
+    expect((component.crumbs[0] as any).label).toBe('a');
+    expect((component.crumbs[1] as any).label).toBe('c');
+  });
+  it('should shaw all the crumbs if showAll = true', () => {
+    component.reverse = true;
+    component.showAll = true;
+    component.ngOnInit();
+    crumbs$.next([{label: 'a'}, {label: 'b'}, {label: 'c'}]);
+    expect((component.crumbs[0] as any).label).toBe('c');
+    expect((component.crumbs[1] as any).label).toBe('b');
+    expect((component.crumbs[2] as any).label).toBe('a');
+  });
+
 });

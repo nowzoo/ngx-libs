@@ -33,6 +33,40 @@ describe('NgxCrumbDirective', () => {
     it('should have url', () => {
       expect(directive.url).toBe(ngxCrumb);
     });
+
+    describe('getting the url when ngxCrumb is not defined', () => {
+      beforeEach(() => {
+        directive.ngxCrumb = null;
+      });
+      it('should return the right array', () => {
+        const routeSnapshot = {
+          url: [{path: 'foo'}],
+          parent: {
+            url: [{path: 'bar'}],
+            parent: {
+              url: [{path: 'baz'}],
+              parent: null
+            }
+          }
+        };
+        spyOnProperty(directive, 'route').and.returnValue(routeSnapshot);
+        expect(directive.url).toEqual(['baz', 'bar', 'foo']);
+      });
+      it('should ignore empty urls', () => {
+        const routeSnapshot = {
+          url: [{path: 'foo'}],
+          parent: {
+            url: [],
+            parent: {
+              url: [{path: 'baz'}],
+              parent: null
+            }
+          }
+        };
+        spyOnProperty(directive, 'route').and.returnValue(routeSnapshot);
+        expect(directive.url).toEqual(['baz', 'foo']);
+      });
+    });
   });
 
   describe('ngOnInit', () => {
@@ -48,4 +82,6 @@ describe('NgxCrumbDirective', () => {
       expect(service.removeCrumb).toHaveBeenCalledWith(directive);
     });
   });
+
+
 });
