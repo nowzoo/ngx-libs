@@ -1,6 +1,6 @@
 # ngx-libs
 
-Various small angular libraries.
+Small angular libraries. 
 
 ## @nowzoo/ngx-message
 A service and component for displaying app messages.
