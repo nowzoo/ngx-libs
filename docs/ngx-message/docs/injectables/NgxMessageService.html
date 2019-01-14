@@ -191,7 +191,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/lib/ngx-message.service.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/lib/ngx-message.service.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -229,7 +229,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/lib/ngx-message.service.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/lib/ngx-message.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -322,7 +322,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/lib/ngx-message.service.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/lib/ngx-message.service.ts:41</a></div>
                             </td>
                         </tr>
 
@@ -391,7 +391,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/lib/ngx-message.service.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/lib/ngx-message.service.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -460,7 +460,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/lib/ngx-message.service.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/lib/ngx-message.service.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -560,15 +560,6 @@ export class NgxMessageService {
     return this._message$.asObservable();
   }
 
-  /**
-   * @param text  Comment for parameter ´text´.
-   */
-  /**
-   * Show a message.
-   * @param  message string
-   * @param  context &#x27;wait&#x27;, &#x27;warn&#x27; or &#x27;success&#x27;
-   * @param  hide    Whether to hide the message automatically
-   */
   show(message: string, context: NgxMessageContext, hide: boolean) {
     if (this._hideTimeout) {
       clearTimeout(this._hideTimeout);

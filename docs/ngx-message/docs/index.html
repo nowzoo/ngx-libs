@@ -37,17 +37,17 @@
 <a href="https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-message-demo/src/app">Demo Source Code</a></p>
 <p><a href="https://nowzoo.github.io/ngx-libs/ngx-message/docs/">Documentation</a></p>
 <h2 id="quick-start">Quick start</h2>
-<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-message --save</code></pre></div><p>Import the module...</p>
+<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nowzoo/ngx-message --save</code></pre></div><p>Import the module, calling <code>forRoot()</code>. This should probably be in your main <code>app</code> module.</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { NgxMessageModule } from &#39;&#64;nowzoo/ngx-message&#39;;
 &#64;NgModule({
   imports: [
     NgxMessageModule.forRoot()
   ],
 })
-export class AppModule { }</code></pre></div><p>Insert the component at a high level in your app...</p>
+export class AppModule { }</code></pre></div><p>Insert an instance of <code>NgxMessageComponent</code> at a high level in your app. This is intended to be a singleton.</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;!-- app.component.html --&gt;
 &lt;router-outlet&gt;&lt;/router-outlet&gt;
-&lt;ngx-message&gt;&lt;/ngx-message&gt;</code></pre></div><p>Use the service to display messages...</p>
+&lt;ngx-message&gt;&lt;/ngx-message&gt;</code></pre></div><p>Use the service in components to display messages...</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { NgxMessageService } from &#39;&#64;nowzoo/ngx-message&#39;;
 
 export class MyComponent {
@@ -65,38 +65,45 @@ export class MyComponent {
   }
 
   showWait() {
-    this.msgService.wait(&#39;Waiting...&#39;)
+    this.service.wait(&#39;Waiting for a while....&#39;);
+    setTimeout(() =&gt; {
+      this.service.success(&#39;All done!&#39;);
+    }, 3000);
   }
 
 }
-</code></pre></div><h3 id="api">API</h3>
-<h4 id="const-ngx_message_hide_delay">const NGX_MESSAGE_HIDE_DELAY</h4>
-<div><pre class="line-numbers"><code class="language-ts">const NGX_MESSAGE_HIDE_DELAY: InjectionToken&lt;number&gt;</code></pre></div><p>How long in milliseconds success and warn messages stay visible before being automatically hidden. Default: <code>3000</code>. You can provide a different value:</p>
-<div><pre class="line-numbers"><code class="language-ts">{provide: NGX_MESSAGE_HIDE_DELAY, useValue: 5000}</code></pre></div><h4 id="enum-ngxmessagecontext">enum NgxMessageContext</h4>
-<div><pre class="line-numbers"><code class="language-ts">enum NgxMessageContext  {
-  warn = &#39;warn&#39;,
-  success = &#39;success&#39;,
-  wait = &#39;wait&#39;
-}</code></pre></div><h4 id="interface-ingxmessage">interface INgxMessage</h4>
-<div><pre class="line-numbers"><code class="language-ts">interface INgxMessage {
-  message: string;
-  context: NgxMessageContext;
-}</code></pre></div><h4 id="ngxmessageservice">NgxMessageService</h4>
-<h5 id="properties">Properties</h5>
+</code></pre></div><h3 id="component-styles">Component Styles</h3>
+<p>The message component styles are based on Bootstrap alerts and Font Awesome. The styles are packaged with the component. So...</p>
 <ul>
-<li><code>message$: Observable&lt;INgxMessage&gt;</code></li>
+<li>You do not have to add Bootstrap or Font Awesome styles.</li>
+<li>If you want different styling, animations, layout or icons, just extend <code>NgxMessageComponent</code> with a different template and stylesheet.</li>
 </ul>
-<h5 id="methods">Methods</h5>
-<ul>
-<li><code>show(message: string, context: NgxMessageContext, hide: boolean)</code></li>
-<li><code>hide()</code></li>
-<li><code>wait(message: string)</code></li>
-<li><code>success(message: string)</code></li>
-<li><code>warn(message: string)</code></li>
-</ul>
-<h4 id="ngxmessagecomponent">NgxMessageComponent</h4>
-<h3 id="contributing">Contributing</h3>
-<p>See the <a href="https://github.com/nowzoo/ngx-libs">repo README</a> for how to test and build this library.</p>
+<h3 id="hiding-the-message">Hiding the message</h3>
+<p>The <code>success</code> and <code>warn</code> methods automatically hide the message after <code>NGX_MESSAGE_HIDE_DELAY</code> milliseconds (by default, 3000ms). The <code>wait</code> method does not hide the message: You must hide it yourself using the <code>success</code>, <code>warn</code> or <code>hide</code> methods. You can change the hide delay by providing a different value for <code>NGX_MESSAGE_HIDE_DELAY</code>:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { NGX_MESSAGE_HIDE_DELAY, NgxMessageModule } from &#39;./shared&#39;;
+&#64;NgModule({
+  imports: [
+    NgxMessageModule.forRoot()
+  ],
+  providers: [
+    {provide: NGX_MESSAGE_HIDE_DELAY, useValue: 1000}
+  ]
+})
+export class AppModule { }</code></pre></div><h3 id="contributing">Contributing</h3>
+<p>Clone the main repo and npm install...</p>
+<div><pre class="line-numbers"><code class="language-bash">git clone https://github.com/nowzoo/ngx-libs.git
+cd ngx-libs
+npm i</code></pre></div><p>The library files are in <code>projects/ngx-message</code>.</p>
+<p>The demo code is in <code>projects/ngx-message-demo</code>.</p>
+<p>Building the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng build ngx-message</code></pre></div><p>Testing the library...</p>
+<div><pre class="line-numbers"><code class="language-bash">ng test ngx-message</code></pre></div><p>To test with Wallaby, use the <code>wallaby.js</code> config at the root of the project directory.</p>
+<p>Serving the demo...</p>
+<div><pre class="line-numbers"><code class="language-bash"># make sure you&#39;ve built the library locally first with ng build ngx-message
+ng serve ngx-message-demo</code></pre></div><h3 id="issues">Issues</h3>
+<p>Please submit issues to the main repo <a href="https://github.com/nowzoo/ngx-libs/issues">here</a>.</p>
+<h3 id="license">License</h3>
+<p><a href="https://github.com/nowzoo/ngx-libs/blob/master/projects/ngx-message/LICENSE">MIT</a></p>
 
 
 

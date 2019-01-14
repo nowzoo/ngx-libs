@@ -17,15 +17,6 @@ export class NgxMessageService {
     return this._message$.asObservable();
   }
 
-  /**
-   * @param text  Comment for parameter ´text´.
-   */
-  /**
-   * Show a message.
-   * @param  message string
-   * @param  context 'wait', 'warn' or 'success'
-   * @param  hide    Whether to hide the message automatically
-   */
   show(message: string, context: NgxMessageContext, hide: boolean) {
     if (this._hideTimeout) {
       clearTimeout(this._hideTimeout);

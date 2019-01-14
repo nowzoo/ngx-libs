@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     NgxMessageModule.forRoot()
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
