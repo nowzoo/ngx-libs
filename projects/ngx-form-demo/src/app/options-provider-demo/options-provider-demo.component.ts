@@ -11,7 +11,7 @@ import { NGX_FORM_OPTIONS, NgxValidityOn } from '@nowzoo/ngx-form';
       controlInvalidClass: 'my-invalid-control',
       controlValidClass: 'my-valid-control',
       errorContainerClass: 'my-error',
-      successContainerClass: 'my-error',
+      successContainerClass: 'my-success',
       showValidityOn: NgxValidityOn.dirty
     }}
   ]
