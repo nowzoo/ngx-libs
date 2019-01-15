@@ -54,6 +54,12 @@
 			],
 			"@nowzoo/ngx-bootstrap-modal/*": [
 				"dist/ngx-bootstrap-modal/*"
+			],
+			"@nowzoo/ngx-form-helpers": [
+				"dist/ngx-form-helpers"
+			],
+			"@nowzoo/ngx-form-helpers/*": [
+				"dist/ngx-form-helpers/*"
 			]
 		}
 	}

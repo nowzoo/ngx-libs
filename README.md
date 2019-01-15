@@ -61,7 +61,7 @@ Simple date and time inputs. No calendars or fancy controls or polyfills. They j
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-date-time-inputs/docs/)
 
-# @nowzoo/ngx-bootstrap-modal
+## @nowzoo/ngx-bootstrap-modal
 
 Service for creating and showing Bootstrap modals from templates.
 
@@ -72,3 +72,11 @@ Service for creating and showing Bootstrap modals from templates.
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-bootstrap-modal-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-bootstrap-modal/docs/)
+
+## @nowzoo/ngx-form-helpers
+
+Static helpers for Angular reactive forms.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-helpers)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-form-helpers/docs/)
