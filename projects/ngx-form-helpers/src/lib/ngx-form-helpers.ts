@@ -4,7 +4,6 @@ import { take } from 'rxjs/operators';
 
 export class NgxFormHelpers {
 
-  s;
   static setErrorUntilChanged(fc: AbstractControl, key: string, value: any = true) {
     const error = {};
     error[key] = value;
