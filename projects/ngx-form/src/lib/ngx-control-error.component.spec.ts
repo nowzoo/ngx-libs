@@ -40,4 +40,12 @@ describe('NgxControlErrorComponent', () => {
     validity$.next(NgxValidity.valid);
     expect(component.shown).toBe(false);
   });
+  it('should set shown based on validity if passed an array of keys', () => {
+    component.key = ['required', 'email'];
+    component.ngOnInit();
+    validity$.next(NgxValidity.invalid);
+    expect(component.shown).toBe(true);
+    validity$.next(NgxValidity.valid);
+    expect(component.shown).toBe(false);
+  });
 });

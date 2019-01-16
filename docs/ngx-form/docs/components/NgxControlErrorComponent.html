@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@nowzoo/ngx-form 1.0.2 Documentation</title>
+        <title>@nowzoo/ngx-form 1.1.0 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">@nowzoo/ngx-form 1.0.2 Documentation</a>
+            <a href="../" class="navbar-brand">@nowzoo/ngx-form 1.1.0 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -248,7 +248,7 @@
                     </td>
                     <td class="col-md-10">
                             <p>
-                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <em>Type :</em>    <code>string | string[]</code>
 
                             </p>
                     </td>
@@ -328,7 +328,7 @@ import { NgxControlAbstractDirective } from &#x27;./ngx-control-abstract-directi
   styles: []
 })
 export class NgxControlErrorComponent extends NgxControlAbstractDirective {
-  @Input() key: string;
+  @Input() key: string | string[];
   @Input() containerClass: string;
   shown &#x3D; false;
   constructor(
@@ -340,7 +340,14 @@ export class NgxControlErrorComponent extends NgxControlAbstractDirective {
 
   protected _update(validity: NgxValidity) {
     this.containerClass &#x3D; this.containerClass || this._options.errorContainerClass;
-    this.shown &#x3D; NgxValidity.invalid &#x3D;&#x3D;&#x3D; validity &amp;&amp; this._controlValidity.control.hasError(this.key);
+    let hasError &#x3D; false;
+    const arrKeys &#x3D; Array.isArray(this.key) ? this.key : [this.key];
+    arrKeys.forEach(key &#x3D;&gt; {
+      if (this._controlValidity.control.hasError(key)) {
+        hasError &#x3D; true;
+      }
+    });
+    this.shown &#x3D; NgxValidity.invalid &#x3D;&#x3D;&#x3D; validity &amp;&amp; hasError;
   }
 }
 </code></pre>

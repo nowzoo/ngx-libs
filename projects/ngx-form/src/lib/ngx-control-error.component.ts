@@ -17,7 +17,7 @@ import { NgxControlAbstractDirective } from './ngx-control-abstract-directive';
   styles: []
 })
 export class NgxControlErrorComponent extends NgxControlAbstractDirective {
-  @Input() key: string;
+  @Input() key: string | string[];
   @Input() containerClass: string;
   shown = false;
   constructor(
@@ -29,6 +29,13 @@ export class NgxControlErrorComponent extends NgxControlAbstractDirective {
 
   protected _update(validity: NgxValidity) {
     this.containerClass = this.containerClass || this._options.errorContainerClass;
-    this.shown = NgxValidity.invalid === validity && this._controlValidity.control.hasError(this.key);
+    let hasError = false;
+    const arrKeys = Array.isArray(this.key) ? this.key : [this.key];
+    arrKeys.forEach(key => {
+      if (this._controlValidity.control.hasError(key)) {
+        hasError = true;
+      }
+    });
+    this.shown = NgxValidity.invalid === validity && hasError;
   }
 }
