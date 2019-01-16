@@ -60,6 +60,12 @@
 			],
 			"@nowzoo/ngx-form-helpers/*": [
 				"dist/ngx-form-helpers/*"
+			],
+			"@nowzoo/ngx-password-toggle": [
+				"dist/ngx-password-toggle"
+			],
+			"@nowzoo/ngx-password-toggle/*": [
+				"dist/ngx-password-toggle/*"
 			]
 		}
 	}

@@ -1,0 +1,30 @@
+<p>
+  <input
+    type="password"
+    name="password"
+    value="Super Secret"
+    #passwordInput
+    class="form-control">
+</p>
+<p>
+  <ngx-password-toggle [input]="passwordInput"></ngx-password-toggle>
+</p>
+
+<p>
+  Change the labels...
+</p>
+
+<p>
+  <input
+    type="password"
+    name="password"
+    value="Super Secret Something"
+    #passwordInput2
+    class="form-control">
+</p>
+<p>
+  <ngx-password-toggle
+    [input]="passwordInput2"
+    hideLabel="Hide the password"
+    showLabel="Show the password"></ngx-password-toggle>
+</p>

@@ -80,3 +80,15 @@ Static helpers for Angular reactive forms.
 [Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-form-helpers)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-form-helpers/docs/)
+
+## @nowzoo/ngx-password-toggle
+
+A password toggle component for Angular.
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-password-toggle)
+|
+[Demo](https://nowzoo.github.io/ngx-libs/ngx-password-toggle/)
+|
+[Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-password-toggle-demo/src/app)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-password-toggle/docs/)
