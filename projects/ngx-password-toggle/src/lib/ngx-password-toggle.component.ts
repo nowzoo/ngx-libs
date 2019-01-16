@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Renderer2} from '@angular/core';
   styles: []
 })
 export class NgxPasswordToggleComponent implements OnInit {
+
   @Input() input: HTMLInputElement;
   @Input() hideLabel = 'Hide';
   @Input() showLabel = 'Show';
