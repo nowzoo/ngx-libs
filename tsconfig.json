@@ -66,6 +66,12 @@
 			],
 			"@nowzoo/ngx-password-toggle/*": [
 				"dist/ngx-password-toggle/*"
+			],
+			"@nowzoo/ngx-firebase-oob": [
+				"dist/ngx-firebase-oob"
+			],
+			"@nowzoo/ngx-firebase-oob/*": [
+				"dist/ngx-firebase-oob/*"
 			]
 		}
 	}

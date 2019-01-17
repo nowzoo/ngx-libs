@@ -92,3 +92,11 @@ A password toggle component for Angular.
 [Demo Source Code](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-password-toggle-demo/src/app)
 |
 [Documentation](https://nowzoo.github.io/ngx-libs/ngx-password-toggle/docs/)
+
+## @nowzoo/ngx-firebase-oob
+
+A service for handling Firebase out-of-band actions
+
+[Project & README](https://github.com/nowzoo/ngx-libs/tree/master/projects/ngx-firebase-oob)
+|
+[Documentation](https://nowzoo.github.io/ngx-libs/ngx-firebase-oob/docs/)

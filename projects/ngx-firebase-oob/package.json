@@ -1,0 +1,18 @@
+{
+	"name": "@nowzoo/ngx-firebase-oob",
+	"version": "0.0.1-alpha",
+	"peerDependencies": {
+		"@angular/common": "^7.2.0",
+		"@angular/core": "^7.2.0",
+		"@angular/fire": "^5.1.1",
+		"firebase": "^5.7.3"
+	},
+	"description": "A service for handling Firebase out-of-band actions",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-firebase-oob"
+}
