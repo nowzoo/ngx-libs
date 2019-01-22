@@ -1,0 +1,27 @@
+<div class="screen" *ngIf="'wait'===screen">
+  <div class="alert alert-light" role="alert">
+    <i class="fas fa-spin fa-spinner fa-fw"></i>
+    Please wait...
+  </div>
+</div>
+<div class="screen" *ngIf="'oobError'===screen">
+  <ngx-oob-error [controller]="controller" [error]="oobError"></ngx-oob-error>
+</div>
+<div class="screen" *ngIf="'oobRecoverEmail'===screen">
+  <ngx-oob-recover-email [controller]="controller"></ngx-oob-recover-email>
+</div>
+<div class="screen" *ngIf="'oobVerifyEmail'===screen">
+  <ngx-oob-verify-email [controller]="controller"></ngx-oob-verify-email>
+</div>
+<div class="screen" *ngIf="'oobResetPassword'===screen">
+  <ngx-oob-reset-password [controller]="controller"></ngx-oob-reset-password>
+</div>
+<div class="screen" *ngIf="'resetPassword'===screen">
+  <ngx-reset-password [controller]="controller"></ngx-reset-password>
+</div>
+<div class="screen" *ngIf="'signIn'===screen">
+  <ngx-sign-in [controller]="controller"></ngx-sign-in>
+</div>
+<div class="screen" *ngIf="'signUp'===screen">
+  <ngx-sign-up [controller]="controller"></ngx-sign-up>
+</div>

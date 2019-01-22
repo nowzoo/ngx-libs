@@ -1,0 +1,35 @@
+<div [ngSwitch]="screen">
+  <div class="screen" *ngSwitchCase="'wait'">
+    <div class="alert alert-light">
+      <i class="fas fa-spin fa-spinner"></i>
+      Please wait...
+    </div>
+  </div>
+
+  <div class="screen" *ngSwitchCase="'success'">
+    <div class="alert alert-success">
+      The email {{info.data.email}} has been verified.
+    </div>
+  </div>
+  <div class="screen" *ngSwitchCase="'error'">
+    <div class="alert alert-danger">
+      <span *ngIf="'auth/expired-action-code'===error.code">
+        The link you used to verify your email has expired.
+      </span>
+      <span *ngIf="'auth/invalid-action-code'===error.code">
+        The link you used to verify your email is invalid.
+        This may be because you already used it once.
+      </span>
+      <span *ngIf="'auth/user-disabled'===error.code">
+        The user account associated with this verify email link has been disabled.
+      </span>
+      <span *ngIf="'auth/user-disabled'===error.code">
+        The user account associated with this verify email link has been deleted.
+      </span>
+    </div>
+    <p class="text-muted">
+      <a [routerLink]="['.']" fragment="verifyEmail">Click here</a>
+      to request a new link.
+    </p>
+  </div>
+</div>

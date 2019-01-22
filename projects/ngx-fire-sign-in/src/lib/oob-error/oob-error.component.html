@@ -1,0 +1,27 @@
+<div class="alert alert-danger">
+  <span *ngIf="'auth/expired-action-code'===error.code">
+    The link you used has expired.
+  </span>
+  <span *ngIf="'auth/invalid-action-code'===error.code">
+    The link you used is invalid.
+    This may be because you already used it once.
+  </span>
+  <span *ngIf="'auth/user-disabled'===error.code">
+    The user account associated with this link has been disabled.
+  </span>
+  <span *ngIf="'auth/user-disabled'===error.code">
+    The user account associated with this link has been deleted.
+  </span>
+  <span *ngIf="'unhandled-operation'===error.code">
+    An unknown error occurred.
+  </span>
+  Please try again.
+</div>
+<p class="text-muted">
+  <a href="#" (click)="$event.preventDefault();controller.screen=screens.resetPassword">Click here</a>
+  to request a new reset password link.
+</p>
+<p class="text-muted">
+  <a href="#" (click)="$event.preventDefault();controller.screen=screens.verifyEmail">Click here</a>
+  to request a new verify email link.
+</p>

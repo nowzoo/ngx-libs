@@ -1,0 +1,51 @@
+<form [formGroup]="fg" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label [attr.for]="id + 'email'">Email Address</label>
+    <input
+      [attr.id]="id + 'email'"
+      type="text"
+      [attr.aria-describedby]="id + 'email-help'"
+      class="form-control form-control-lg"
+      placeholder="Email Address"
+      formControlName="email">
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      Don’t have an account? You’re currently signed in as {{user.email}}.
+    </small>
+  </div>
+  <div class="form-group" ngxControlValidity>
+    <div class="d-flex justify-content-between align-items-baseline">
+      <label [attr.for]="id + 'password'">
+        Current Password
+      </label>
+      <small>
+        <ngx-password-toggle [input]="passwordInput"></ngx-password-toggle>
+      </small>
+    </div>
+    <input
+      #passwordInput
+      placeholder="Password"
+      [attr.id]="id + 'password'"
+      [attr.aria-describedby]="id + 'password-help'"
+      type="password"
+      class="form-control form-control-lg"
+      formControlName="password"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error key="auth/wrong-password">
+      Wrong password.
+    </ngx-control-error>
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      Enter the current password for {{user.email}}.
+      Forgot?
+      <a href="#" (click)="$event.preventDefault();controller.showResetPassword();">Reset Password</a>
+    </small>
+  </div>
+  <div class="form-group text-right">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg"
+      [disabled]="fg.invalid || submitting">
+      Reauthenticate
+    </button>
+  </div>
+</form>

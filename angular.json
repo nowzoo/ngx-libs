@@ -1249,6 +1249,287 @@
           }
         }
       }
+    },
+    "ngx-firebase-auth": {
+      "root": "projects/ngx-firebase-auth",
+      "sourceRoot": "projects/ngx-firebase-auth/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-firebase-auth/tsconfig.lib.json",
+            "project": "projects/ngx-firebase-auth/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-firebase-auth/src/test.ts",
+            "tsConfig": "projects/ngx-firebase-auth/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-firebase-auth/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-firebase-auth/tsconfig.lib.json",
+              "projects/ngx-firebase-auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-firebase-auth-demo": {
+      "root": "projects/ngx-firebase-auth-demo/",
+      "sourceRoot": "projects/ngx-firebase-auth-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-firebase-auth-demo",
+            "index": "projects/ngx-firebase-auth-demo/src/index.html",
+            "main": "projects/ngx-firebase-auth-demo/src/main.ts",
+            "polyfills": "projects/ngx-firebase-auth-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-firebase-auth-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-firebase-auth-demo/src/favicon.ico",
+              "projects/ngx-firebase-auth-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-firebase-auth-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-firebase-auth-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-firebase-auth-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-firebase-auth-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-firebase-auth-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-firebase-auth-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-firebase-auth-demo/src/test.ts",
+            "polyfills": "projects/ngx-firebase-auth-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-firebase-auth-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-firebase-auth-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-firebase-auth-demo/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-firebase-auth-demo/src/favicon.ico",
+              "projects/ngx-firebase-auth-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-firebase-auth-demo/tsconfig.app.json",
+              "projects/ngx-firebase-auth-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-fire-sign-in": {
+      "root": "projects/ngx-fire-sign-in",
+      "sourceRoot": "projects/ngx-fire-sign-in/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-fire-sign-in/tsconfig.lib.json",
+            "project": "projects/ngx-fire-sign-in/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-fire-sign-in/src/test.ts",
+            "tsConfig": "projects/ngx-fire-sign-in/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-fire-sign-in/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-fire-sign-in/tsconfig.lib.json",
+              "projects/ngx-fire-sign-in/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-fire-sign-in-demo": {
+      "root": "projects/ngx-fire-sign-in-demo/",
+      "sourceRoot": "projects/ngx-fire-sign-in-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-fire-sign-in-demo",
+            "index": "projects/ngx-fire-sign-in-demo/src/index.html",
+            "main": "projects/ngx-fire-sign-in-demo/src/main.ts",
+            "polyfills": "projects/ngx-fire-sign-in-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-fire-sign-in-demo/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-fire-sign-in-demo/src/favicon.ico",
+              "projects/ngx-fire-sign-in-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-fire-sign-in-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-fire-sign-in-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-fire-sign-in-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-fire-sign-in-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-fire-sign-in-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-fire-sign-in-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-fire-sign-in-demo/src/test.ts",
+            "polyfills": "projects/ngx-fire-sign-in-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-fire-sign-in-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-fire-sign-in-demo/karma.conf.js",
+            "styles": [
+              "projects/ngx-fire-sign-in-demo/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-fire-sign-in-demo/src/favicon.ico",
+              "projects/ngx-fire-sign-in-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-fire-sign-in-demo/tsconfig.app.json",
+              "projects/ngx-fire-sign-in-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-form"

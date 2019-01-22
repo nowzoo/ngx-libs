@@ -72,6 +72,18 @@
 			],
 			"@nowzoo/ngx-firebase-oob/*": [
 				"dist/ngx-firebase-oob/*"
+			],
+			"@nowzoo/ngx-firebase-auth": [
+				"dist/ngx-firebase-auth"
+			],
+			"@nowzoo/ngx-firebase-auth/*": [
+				"dist/ngx-firebase-auth/*"
+			],
+			"@nowzoo/ngx-fire-sign-in": [
+				"dist/ngx-fire-sign-in"
+			],
+			"@nowzoo/ngx-fire-sign-in/*": [
+				"dist/ngx-fire-sign-in/*"
 			]
 		}
 	}

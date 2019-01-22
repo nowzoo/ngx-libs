@@ -1,0 +1,73 @@
+<form [formGroup]="fg" (ngSubmit)="submit()">
+  <div class="form-group" ngxControlValidity>
+    <label [attr.for]="id + 'email'">Email Address</label>
+    <input
+      [attr.id]="id + 'email'"
+      type="text"
+      [attr.aria-describedby]="id + 'email-help'"
+      class="form-control form-control-lg"
+      placeholder="Email Address"
+      formControlName="email"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error [key]="['email', 'auth/weak-password']">
+      Invalid email address.
+    </ngx-control-error>
+    <ngx-control-error key="auth/user-disabled">
+      The account associated with that email address
+      has been disabled.
+    </ngx-control-error>
+    <ngx-control-error key="auth/user-not-found">
+      We could not find an account with that email address.
+    </ngx-control-error>
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      Don’t have an account?
+      <a [routerLink]="['.']" fragment="signUp">Sign Up</a>
+    </small>
+  </div>
+  <div class="form-group" ngxControlValidity>
+    <div class="d-flex justify-content-between align-items-baseline">
+      <label [attr.for]="id + 'password'">Password</label>
+      <small>
+        <ngx-password-toggle [input]="passwordInput"></ngx-password-toggle>
+      </small>
+    </div>
+    <input
+      #passwordInput
+      placeholder="Password"
+      [attr.id]="id + 'password'"
+      type="password"
+      class="form-control form-control-lg"
+      formControlName="password"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error key="auth/wrong-password">
+      Wrong password.
+    </ngx-control-error>
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      Forgot?
+      <a [routerLink]="['.']" fragment="resetPassword">Reset Password</a>
+    </small>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input
+        [attr.id]="id + 'remember'"
+        class="form-check-input"
+        formControlName="remember"
+        type="checkbox"
+        value="true">
+      <label class="form-check-label" [attr.for]="id + 'remember'">
+        Remember me on this device.
+      </label>
+    </div>
+  </div>
+  <div class="form-group text-right">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg"
+      [disabled]="fg.invalid || submitting">
+      Sign In
+    </button>
+  </div>
+</form>

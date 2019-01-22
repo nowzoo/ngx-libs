@@ -1,0 +1,16 @@
+{
+	"name": "@nowzoo/ngx-fire-sign-in",
+	"version": "0.0.1",
+	"peerDependencies": {
+		"@angular/common": "^7.2.0",
+		"@angular/core": "^7.2.0"
+	},
+	"description": "A simple drop in component for Firebase authentication using the sign in link method",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nowzoo/ngx-libs.git"
+	},
+	"bugs": "https://github.com/nowzoo/ngx-libs/issues",
+	"homepage": "https://nowzoo.github.io/ngx-libs/ngx-fire-sign-in"
+}

@@ -1,0 +1,45 @@
+<div *ngIf="showReauthenticate">
+  <div class="alert alert-info">
+    Changing your email requires a recent sign-in. Please enter the
+    current password for {{user.email}}.
+  </div>
+  <ngx-reauthenticate-form
+    [user]="user"
+    [controller]="controller"
+    (success)="onReauthenticated()"></ngx-reauthenticate-form>
+</div>
+<div *ngIf="!showReauthenticate">
+  <form [formGroup]="fg" (ngSubmit)="submit()">
+    <div class="form-group" ngxControlValidity>
+      <label [attr.for]="id + 'email'">New Email Address</label>
+      <input
+        [attr.id]="id + 'email'"
+        type="text"
+        [attr.aria-describedby]="id + 'email-help'"
+        class="form-control form-control-lg"
+        placeholder="New Email Address"
+        formControlName="email"
+        ngxControlInvalidClass>
+      <ngx-control-error key="required">Required.</ngx-control-error>
+      <ngx-control-error key="same">That‘s your current email address.</ngx-control-error>
+      <ngx-control-error [key]="['email', 'auth/invalid-email']">
+        Invalid email address.
+      </ngx-control-error>
+      <ngx-control-error key="auth/email-already-in-use">
+        That email address is already in use.
+      </ngx-control-error>
+      <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+        Enter your new email address.
+      </small>
+    </div>
+    <div class="form-group text-right">
+      <button
+        type="submit"
+        class="btn btn-success btn-lg"
+        [disabled]="fg.invalid || submitting">
+        Save Email Address
+      </button>
+    </div>
+  </form>
+
+</div>

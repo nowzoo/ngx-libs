@@ -1,0 +1,76 @@
+<form [formGroup]="fg" (ngSubmit)="submit()">
+  <div class="form-group" ngxControlValidity>
+    <label [attr.for]="id + 'name'">Your Name</label>
+    <input
+      [attr.id]="id + 'name'"
+      type="text"
+      class="form-control form-control-lg"
+      placeholder="Your Name"
+      formControlName="name"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+  </div>
+  <div class="form-group" ngxControlValidity>
+    <label [attr.for]="id + 'email'">Email Address</label>
+    <input
+      [attr.id]="id + 'email'"
+      type="text"
+      [attr.aria-describedby]="id + 'email-help'"
+      class="form-control form-control-lg"
+      placeholder="Email Address"
+      formControlName="email"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error [key]="['email', 'auth/invalid-email']">
+      Invalid email address.
+    </ngx-control-error>
+    <ngx-control-error key="auth/email-already-in-use">
+      That email address is already in use.
+    </ngx-control-error>
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      Already have an account?
+      <a [routerLink]="['.']" fragment="signIn">Sign In</a>
+    </small>
+  </div>
+  <div class="form-group" ngxControlValidity>
+    <div class="d-flex justify-content-between align-items-baseline">
+      <label [attr.for]="id + 'password'">Choose Password</label>
+      <small>
+        <ngx-password-toggle [input]="passwordInput"></ngx-password-toggle>
+      </small>
+    </div>
+    <input
+      #passwordInput
+      [attr.id]="id + 'password'"
+      type="password"
+      placeholder="Choose Password"
+      class="form-control form-control-lg"
+      formControlName="password"
+      ngxControlInvalidClass>
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error key="auth/weak-password">
+      That password is too weak.
+    </ngx-control-error>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input
+        [attr.id]="id + 'remember'"
+        class="form-check-input"
+        formControlName="remember"
+        type="checkbox"
+        value="true">
+      <label class="form-check-label" [attr.for]="id + 'remember'">
+        Remember me on this device.
+      </label>
+    </div>
+  </div>
+  <div class="form-group text-right">
+    <button
+      type="submit"
+      class="btn btn-success btn-lg"
+      [disabled]="fg.invalid || submitting">
+      Sign Up
+    </button>
+  </div>
+</form>

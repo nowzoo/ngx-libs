@@ -1,0 +1,21 @@
+<form [formGroup]="fg" (ngSubmit)="submit()">
+  <div class="form-group" ngxControlValidity>
+    <label [attr.for]="id + 'email'">Email Address</label>
+    <input
+      [attr.id]="id + 'email'"
+      [attr.aria-describedby]="id + 'email-help'"
+      type="text"
+      formControlName="email"
+      ngxControlInvalidClass
+      class="form-control form-control-lg">
+    <ngx-control-error key="required">Required.</ngx-control-error>
+    <ngx-control-error [key]="['email', 'auth/invalid-email']">Invalid email address.</ngx-control-error>
+    <small [attr.id]="id + 'email-help'" class="form-text text-muted">
+      To get started, enter your email address.
+      If you don't have an account, we'll create one for you.
+    </small>
+  </div>
+
+  <pre>methodsFetched: {{methodsFetched | json}}</pre>
+  <pre>hasAccount: {{hasAccount | json}}</pre>
+</form>

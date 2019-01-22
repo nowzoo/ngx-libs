@@ -1,0 +1,15 @@
+<div *ngIf="sent">
+  <div class="alert alert-success">
+    A link to verify your email has been sent to {{sent}}.
+  </div>
+  <p class="text-muted">
+    Please allow a few moments for the email to arrive.
+    Email hasn't arrived?
+    <a href="#" (click)="$event.preventDefault();submit()">Resend link</a>.
+  </p>
+</div>
+
+<div class="alert alert-light" *ngIf="submitting" role="alert">
+  <i class="fas fa-spin fa-spinner fa-fw"></i>
+  Please wait...
+</div>

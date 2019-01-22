@@ -1,0 +1,48 @@
+<div [ngSwitch]="screen">
+  <div class="screen" *ngSwitchCase="'wait'">
+    <div class="alert alert-light">
+      <i class="fas fa-spin fa-spinner"></i>
+      Please wait...
+    </div>
+  </div>
+
+  <div class="screen" *ngSwitchCase="'form'">
+    <p>
+      Are you sure you want to change your email back
+      to {{info.data.email}}? (Current email: {{info.data.fromEmail}})
+    </p>
+    <p class="d-flex justify-content-end">
+      <a class="btn btn-light btn-lg mr-4"
+        routerLink="/">
+        Cancel
+      </a>
+      <button type="button"
+        class="btn btn-success btn-lg"
+        (click)="submit()">
+        Yes, Change Email
+      </button>
+    </p>
+  </div>
+  <div class="screen" *ngSwitchCase="'success'">
+    <div class="alert alert-success">
+      Your email has been changed back to {{info.data.email}}.
+    </div>
+  </div>
+  <div class="screen" *ngSwitchCase="'error'">
+    <div class="alert alert-danger">
+      <span *ngIf="'auth/expired-action-code'===error.code">
+        The link you used to recover your email has expired.
+      </span>
+      <span *ngIf="'auth/invalid-action-code'===error.code">
+        The link you used to recover your email is invalid.
+        This may be because you already used it once.
+      </span>
+      <span *ngIf="'auth/user-disabled'===error.code">
+        The user account associated with this recover email link has been disabled.
+      </span>
+      <span *ngIf="'auth/user-disabled'===error.code">
+        The user account associated with this recover email link has been deleted.
+      </span>
+    </div>
+  </div>
+</div>
